@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Dashboard</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #020617;
+    color: white;
+}
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 40px;
+}
+h2 {
+    margin-bottom: 20px;
+}
+.card {
+    background: #111827;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+select, button {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: none;
+}
+button {
+    background: #22c55e;
+    margin-top: 10px;
+    cursor: pointer;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Dashboard</h2>
+
+    <div class="card">
+        <label>Select Subject</label><br><br>
+        <select>
+            <option>FAR</option>
+            <option>BLAW</option>
+            <option>CLAW</option>
+        </select><br><br>
+        <button onclick="location.href='paper.html'">Generate New Paper</button>
+    </div>
+
+    <div class="card">
+        <h3>Previous Attempts</h3>
+        <p>No attempts yet</p>
+    </div>
+</div>
+
+</body>
+</html>
