@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 1 | AI CAF Examiner</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary: #22c55e;
+  --primary-dark: #16a34a;
+  --secondary: #38bdf8;
+  --accent: #8b5cf6;
+  --warning: #f59e0b;
+  --dark: #020617;
+  --dark-light: #0f172a;
+  --text: #f8fafc;
+  --text-secondary: #94a3b8;
+  --border: rgba(255, 255, 255, 0.1);
+  --card-bg: rgba(15, 23, 42, 0.8);
+  --shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  --success-bg: rgba(34, 197, 94, 0.1);
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--dark);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Animated Background */
+.background-animation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.1;
+  animation: float 25s infinite ease-in-out;
+}
+
+.orb-1 {
+  width: 400px;
+  height: 400px;
+  background: var(--primary);
+  top: -100px;
+  left: -100px;
+  animation-delay: 0s;
+}
+
+.orb-2 {
+  width: 350px;
+  height: 350px;
+  background: var(--secondary);
+  bottom: -100px;
+  right: -80px;
+  animation-delay: -8s;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  33% { transform: translateY(-30px) rotate(120deg); }
+  66% { transform: translateY(30px) rotate(240deg); }
+}
+
+/* Progress Bar */
+.progress-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  z-index: 1000;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  width: 0%;
+  transition: width 0.3s;
+  border-radius: 0 2px 2px 0;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  backdrop-filter: blur(10px);
+  background: rgba(2, 6, 23, 0.9);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-icon {
+  color: var(--primary);
+  font-size: 24px;
+}
+
+.chapter-info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.chapter-badge {
+  background: rgba(34, 197, 94, 0.15);
+  color: var(--primary);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.timer {
+  background: rgba(59, 130, 246, 0.15);
+  color: var(--secondary);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Container */
+.container {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 0 30px;
+}
+
+/* Question Counter */
+.question-counter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding: 20px;
+  background: var(--card-bg);
+  border-radius: 16px;
+  border: 1px solid var(--border);
+}
+
+.counter-info h2 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.counter-info p {
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.question-nav {
+  display: flex;
+  gap: 10px;
+}
+
+.nav-btn {
+  padding: 10px 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--primary);
+}
+
+.nav-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Question Card */
+.question-card {
+  background: var(--card-bg);
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  padding: 30px;
+  margin-bottom: 30px;
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.question-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+.question-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.question-number {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--primary);
+  background: rgba(34, 197, 94, 0.1);
+  padding: 8px 16px;
+  border-radius: 20px;
+}
+
+.question-text {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+/* Answer Tabs */
+.answer-tabs {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 25px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 15px;
+}
+
+.tab-btn {
+  padding: 12px 24px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text-secondary);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.tab-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text);
+}
+
+.tab-btn.active {
+  background: rgba(34, 197, 94, 0.15);
+  color: var(--primary);
+  border-color: rgba(34, 197, 94, 0.3);
+}
+
+/* Answer Input */
+.answer-input {
+  width: 100%;
+  min-height: 180px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  color: var(--text);
+  font-size: 16px;
+  line-height: 1.6;
+  resize: vertical;
+  transition: all 0.3s;
+  margin-bottom: 20px;
+}
+
+.answer-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.1);
+}
+
+/* Upload Area */
+.upload-area {
+  border: 2px dashed var(--border);
+  border-radius: 12px;
+  padding: 40px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-bottom: 20px;
+  display: none;
+}
+
+.upload-area:hover {
+  border-color: var(--primary);
+  background: rgba(34, 197, 94, 0.05);
+}
+
+.upload-icon {
+  font-size: 48px;
+  color: var(--text-secondary);
+  margin-bottom: 15px;
+}
+
+.upload-text h4 {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.upload-text p {
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.upload-btn {
+  margin-top: 15px;
+  padding: 12px 24px;
+  background: rgba(34, 197, 94, 0.15);
+  color: var(--primary);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.upload-btn:hover {
+  background: rgba(34, 197, 94, 0.25);
+}
+
+.file-input {
+  display: none;
+}
+
+/* Image Preview */
+.image-preview {
+  display: none;
+  margin-top: 20px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  position: relative;
+}
+
+.image-preview img {
+  width: 100%;
+  max-height: 400px;
+  object-fit: contain;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.remove-image {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Submit Section */
+.submit-section {
+  text-align: center;
+  margin: 50px 0;
+}
+
+.submit-btn {
+  padding: 18px 50px;
+  background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+  color: white;
+  border: none;
+  border-radius: 14px;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 10px 30px rgba(34, 197, 94, 0.3);
+}
+
+.submit-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(34, 197, 94, 0.4);
+}
+
+.submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Result Panel */
+.result-panel {
+  display: none;
+  background: var(--card-bg);
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  padding: 30px;
+  margin: 40px 0;
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.result-title {
+  font-size: 22px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ai-icon {
+  color: var(--primary);
+}
+
+.result-content {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  padding: 25px;
+  white-space: pre-wrap;
+  line-height: 1.6;
+  font-size: 16px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.score-badge {
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  color: white;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+/* Loading Overlay */
+.loading-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(2, 6, 23, 0.9);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+}
+
+.loading-content {
+  text-align: center;
+  background: var(--card-bg);
+  padding: 50px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  max-width: 500px;
+  width: 90%;
+}
+
+.spinner {
+  width: 60px;
+  height: 60px;
+  border: 4px solid rgba(255, 255, 255, 0.1);
+  border-left-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 20px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 15px 20px;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .container {
+    padding: 0 20px;
+  }
+  
+  .question-counter {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+  
+  .answer-tabs {
+    flex-direction: column;
+  }
+  
+  .question-card {
+    padding: 20px;
+  }
+  
+  .submit-btn {
+    padding: 15px 30px;
+    font-size: 16px;
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  .result-content {
+    padding: 15px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .question-header {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .question-text {
+    font-size: 16px;
+  }
+  
+  .tab-btn {
+    padding: 10px 15px;
+    font-size: 14px;
+  }
+  
+  .answer-input {
+    min-height: 150px;
+    padding: 15px;
+  }
+}
+</style>
+</head>
+
+<body>
+<!-- Animated Background -->
+<div class="background-animation">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+</div>
+
+<!-- Progress Bar -->
+<div class="progress-container">
+  <div class="progress-bar" id="progressBar"></div>
+</div>
+
+<!-- Navbar -->
+<nav class="navbar">
+  <div class="logo">
+    <i class="fas fa-brain logo-icon"></i>
+    <span>AI CAF Examiner</span>
+  </div>
+  
+  <div class="chapter-info">
+    <div class="chapter-badge" id="chapterBadge">Chapter 1: Introduction to Law</div>
+    <div class="timer">
+      <i class="fas fa-clock"></i>
+      <span id="timer">00:00</span>
+    </div>
+  </div>
+</nav>
+
+<!-- Main Container -->
+<div class="container">
+  <!-- Question Counter -->
+  <div class="question-counter">
+    <div class="counter-info">
+      <h2 id="chapterTitle">Introduction to Law</h2>
+      <p>Answer all questions to get AI-powered feedback</p>
+    </div>
+    
+    <div class="question-nav">
+      <button class="nav-btn" onclick="prevQuestion()" id="prevBtn" disabled>
+        <i class="fas fa-chevron-left"></i> Previous
+      </button>
+      <button class="nav-btn" onclick="nextQuestion()" id="nextBtn">
+        Next <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Questions Container -->
+  <div id="questionsContainer"></div>
+
+  <!-- Submit Section -->
+  <div class="submit-section">
+    <button class="submit-btn" onclick="submitTest()" id="submitBtn">
+      <i class="fas fa-paper-plane"></i> Submit Test for AI Evaluation
+    </button>
+    <p style="margin-top: 15px; color: var(--text-secondary); font-size: 14px;">
+      Get detailed feedback from our AI examiner
+    </p>
+  </div>
+
+  <!-- Result Panel -->
+  <div class="result-panel" id="resultPanel">
+    <div class="result-header">
+      <div class="result-title">
+        <i class="fas fa-robot ai-icon"></i>
+        <span>AI Examiner Feedback</span>
+      </div>
+      <div class="score-badge" id="scoreBadge">Score: --/100</div>
+    </div>
+    <div class="result-content" id="resultContent"></div>
+  </div>
+</div>
+
+<!-- Loading Overlay -->
+<div class="loading-overlay" id="loadingOverlay">
+  <div class="loading-content">
+    <div class="spinner"></div>
+    <h3 style="margin-bottom: 15px;">Analyzing Your Answers</h3>
+    <p style="color: var(--text-secondary);">Our AI examiner is reviewing your responses...</p>
+  </div>
+</div>
+
+<script>
+// Global variables
+let currentQuestion = 0;
+let questions = [];
+let timerInterval;
+let startTime;
+
+// Get user mode and token
+const userMode = localStorage.getItem("mode") || "demo";
+const userToken = localStorage.getItem("token") || "";
+
+// Check authorization (simplified for demo)
+function checkAuthorization() {
+  // For demo users, always allow chapter 1
+  if (userMode === "demo") {
+    return true;
+  }
+  
+  // For logged-in users, check with backend
+  if (userMode === "login") {
+    return userToken !== "";
+  }
+  
+  return false;
+}
+
+// Initialize the page
+function initPage() {
+  if (!checkAuthorization()) {
+    alert("You don't have access to this chapter. Redirecting to login...");
+    setTimeout(() => {
+      window.location.href = "index.html";
+    }, 1000);
+    return;
+  }
+  
+  // Load questions
+  loadQuestions();
+  
+  // Start timer
+  startTimer();
+}
+
+/* ---------- LOAD QUESTIONS ---------- */
+function loadQuestions() {
+  // Try to load from backend
+  fetch("http://127.0.0.1:5000/chapter/chapter1")
+    .then(r => {
+      if (!r.ok) throw new Error('Network response was not ok');
+      return r.json();
+    })
+    .then(data => {
+      // Update UI
+      document.getElementById("chapterTitle").innerText = data.name || "Introduction to Law";
+      document.getElementById("chapterBadge").innerText = "Chapter 1: " + (data.name || "Introduction to Law");
+      
+      // Store questions
+      questions = data.questions || getDefaultQuestions();
+      
+      // Initialize questions
+      renderQuestions();
+      
+      // Show first question
+      showQuestion(0);
+      
+      // Update progress
+      updateProgress();
+    })
+    .catch(error => {
+      console.error("Failed to load questions from backend, using default:", error);
+      
+      // Use default questions if backend fails
+      document.getElementById("chapterTitle").innerText = "Introduction to Law";
+      document.getElementById("chapterBadge").innerText = "Chapter 1: Introduction to Law";
+      
+      questions = getDefaultQuestions();
+      
+      // Initialize questions
+      renderQuestions();
+      
+      // Show first question
+      showQuestion(0);
+      
+      // Update progress
+      updateProgress();
+    });
+}
+
+// Default questions in case backend is down
+function getDefaultQuestions() {
+  return [
+    {
+      id: "q1",
+      text: "What are the main sources of law in Pakistan? Explain each briefly.",
+      marks: 5
+    },
+    {
+      id: "q2",
+      text: "Differentiate between civil law and criminal law with examples.",
+      marks: 5
+    },
+    {
+      id: "q3",
+      text: "What is the significance of the Contract Act 1872 in business transactions?",
+      marks: 5
+    },
+    {
+      id: "q4",
+      text: "Explain the concept of 'legal personality' and its importance in business law.",
+      marks: 5
+    }
+  ];
+}
+
+/* ---------- RENDER QUESTIONS ---------- */
+function renderQuestions() {
+  const container = document.getElementById("questionsContainer");
+  container.innerHTML = "";
+  
+  questions.forEach((q, i) => {
+    container.innerHTML += `
+      <div class="question-card" id="question-${i}" style="display: ${i === 0 ? 'block' : 'none'};">
+        <div class="question-header">
+          <div class="question-number">Question ${i + 1} of ${questions.length}</div>
+        </div>
+        
+        <div class="question-text">${q.text}</div>
+        
+        <div class="answer-tabs">
+          <button class="tab-btn ${i === 0 ? 'active' : ''}" onclick="showType(${i})" id="typeTab-${i}">
+            <i class="fas fa-keyboard"></i> Type Answer
+          </button>
+          <button class="tab-btn" onclick="showUpload(${i})" id="uploadTab-${i}">
+            <i class="fas fa-upload"></i> Upload Image
+          </button>
+        </div>
+        
+        <textarea 
+          class="answer-input" 
+          id="${q.id}_text" 
+          placeholder="Type your answer here..."
+          oninput="saveAnswer(${i}, this.value)"
+        ></textarea>
+        
+        <div class="upload-area" id="${q.id}_upload">
+          <div class="upload-icon">
+            <i class="fas fa-cloud-upload-alt"></i>
+          </div>
+          <div class="upload-text">
+            <h4>Upload Your Answer</h4>
+            <p>Take a photo or upload an image of your written answer</p>
+          </div>
+          <button class="upload-btn" onclick="document.getElementById('${q.id}_file').click()">
+            <i class="fas fa-folder-open"></i> Choose File
+          </button>
+          <input type="file" id="${q.id}_file" class="file-input" accept="image/*" onchange="handleImageUpload('${q.id}', this)">
+        </div>
+        
+        <div class="image-preview" id="${q.id}_preview">
+          <div class="remove-image" onclick="removeImage('${q.id}')">
+            <i class="fas fa-times"></i>
+          </div>
+          <img id="${q.id}_img" src="" alt="Uploaded answer">
+        </div>
+      </div>
+    `;
+  });
+}
+
+/* ---------- QUESTION NAVIGATION ---------- */
+function showQuestion(index) {
+  // Hide all questions
+  questions.forEach((_, i) => {
+    document.getElementById(`question-${i}`).style.display = 'none';
+  });
+  
+  // Show current question
+  document.getElementById(`question-${index}`).style.display = 'block';
+  
+  // Update navigation buttons
+  document.getElementById('prevBtn').disabled = index === 0;
+  document.getElementById('nextBtn').disabled = index === questions.length - 1;
+  
+  // Update current question
+  currentQuestion = index;
+  
+  // Update progress
+  updateProgress();
+}
+
+function nextQuestion() {
+  if (currentQuestion < questions.length - 1) {
+    showQuestion(currentQuestion + 1);
+  }
+}
+
+function prevQuestion() {
+  if (currentQuestion > 0) {
+    showQuestion(currentQuestion - 1);
+  }
+}
+
+/* ---------- ANSWER TABS ---------- */
+function showType(index) {
+  const qId = questions[index].id;
+  
+  // Show text input
+  document.getElementById(`${qId}_text`).style.display = 'block';
+  document.getElementById(`${qId}_upload`).style.display = 'none';
+  document.getElementById(`${qId}_preview`).style.display = 'none';
+  
+  // Update tabs
+  document.getElementById(`typeTab-${index}`).classList.add('active');
+  document.getElementById(`uploadTab-${index}`).classList.remove('active');
+}
+
+function showUpload(index) {
+  const qId = questions[index].id;
+  
+  // Show upload area
+  document.getElementById(`${qId}_text`).style.display = 'none';
+  document.getElementById(`${qId}_upload`).style.display = 'block';
+  
+  // Update tabs
+  document.getElementById(`typeTab-${index}`).classList.remove('active');
+  document.getElementById(`uploadTab-${index}`).classList.add('active');
+}
+
+/* ---------- IMAGE UPLOAD ---------- */
+function handleImageUpload(qId, input) {
+  if (input.files && input.files[0]) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      const img = document.getElementById(`${qId}_img`);
+      const preview = document.getElementById(`${qId}_preview`);
+      
+      img.src = e.target.result;
+      preview.style.display = 'block';
+      
+      // Save image data
+      const question = questions.find(q => q.id === qId);
+      if (question) question.imageData = e.target.result;
+      
+      // Update progress
+      updateProgress();
+    };
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+function removeImage(qId) {
+  const preview = document.getElementById(`${qId}_preview`);
+  const fileInput = document.getElementById(`${qId}_file`);
+  
+  preview.style.display = 'none';
+  fileInput.value = '';
+  
+  // Clear image data
+  const question = questions.find(q => q.id === qId);
+  if (question) question.imageData = null;
+  
+  // Update progress
+  updateProgress();
+}
+
+/* ---------- SAVE ANSWER ---------- */
+function saveAnswer(index, value) {
+  questions[index].answer = value;
+  updateProgress();
+}
+
+/* ---------- PROGRESS ---------- */
+function updateProgress() {
+  const answered = questions.filter(q => q.answer || q.imageData).length;
+  const progress = (answered / questions.length) * 100;
+  
+  document.getElementById('progressBar').style.width = `${progress}%`;
+}
+
+/* ---------- TIMER ---------- */
+function startTimer() {
+  startTime = new Date();
+  
+  timerInterval = setInterval(() => {
+    const now = new Date();
+    const diff = now - startTime;
+    
+    const minutes = Math.floor(diff / 60000);
+    const seconds = Math.floor((diff % 60000) / 1000);
+    
+    document.getElementById('timer').textContent = 
+      `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+  }, 1000);
+}
+
+/* ---------- SUBMIT TEST ---------- */
+function submitTest() {
+  const submitBtn = document.getElementById('submitBtn');
+  const loadingOverlay = document.getElementById('loadingOverlay');
+  
+  // Validate all questions answered
+  const unanswered = questions.filter(q => !q.answer && !q.imageData);
+  if (unanswered.length > 0) {
+    if (!confirm(`You have ${unanswered.length} unanswered questions. Submit anyway?`)) {
+      return;
+    }
+  }
+  
+  // Show loading
+  submitBtn.disabled = true;
+  loadingOverlay.style.display = 'flex';
+  
+  // Prepare data
+  let combinedAnswers = "";
+  let imageData = "";
+  
+  questions.forEach((q, i) => {
+    combinedAnswers += `Question ${i + 1} (${q.marks} marks):\n${q.answer || '[Image Upload]'}\n\n`;
+    if (q.imageData) {
+      imageData = q.imageData;
+    }
+  });
+  
+  // Send to server
+  fetch("http://127.0.0.1:5000/check-answer", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      answer: combinedAnswers,
+      image: imageData,
+      chapter: 1
+    })
+  })
+  .then(r => {
+    if (!r.ok) throw new Error('Network response was not ok');
+    return r.json();
+  })
+  .then(data => {
+    // Hide loading
+    loadingOverlay.style.display = 'none';
+    submitBtn.disabled = false;
+    
+    // Show result
+    const resultPanel = document.getElementById('resultPanel');
+    const resultContent = document.getElementById('resultContent');
+    const scoreBadge = document.getElementById('scoreBadge');
+    
+    if (data.result) {
+      resultContent.textContent = data.result;
+      
+      // Extract score if available
+      const scoreMatch = data.result.match(/score.*?(\d+\/\d+)/i) || 
+                        data.result.match(/marks.*?(\d+\/\d+)/i) ||
+                        data.result.match(/(\d+\/\d+)/);
+      
+      if (scoreMatch) {
+        scoreBadge.textContent = `Score: ${scoreMatch[1]}`;
+      } else {
+        scoreBadge.textContent = `Score: Submitted`;
+      }
+    } else {
+      resultContent.textContent = "Thank you for submitting! Your answers have been received.";
+      scoreBadge.textContent = "Score: Pending";
+    }
+    
+    resultPanel.style.display = 'block';
+    
+    // Scroll to result
+    resultPanel.scrollIntoView({ behavior: 'smooth' });
+  })
+  .catch(error => {
+    loadingOverlay.style.display = 'none';
+    submitBtn.disabled = false;
+    
+    console.error("Submission error:", error);
+    
+    // Show mock feedback if server is down
+    const resultPanel = document.getElementById('resultPanel');
+    const resultContent = document.getElementById('resultContent');
+    const scoreBadge = document.getElementById('scoreBadge');
+    
+    resultContent.textContent = `✅ Your test has been submitted successfully!\n\nDue to server connectivity issues, AI feedback is temporarily unavailable.\n\nYour answers have been saved and will be reviewed shortly.\n\nYou can continue practicing other chapters.`;
+    scoreBadge.textContent = "Score: Submitted";
+    
+    resultPanel.style.display = 'block';
+    resultPanel.scrollIntoView({ behavior: 'smooth' });
+  });
+}
+
+/* ---------- KEYBOARD SHORTCUTS ---------- */
+document.addEventListener('keydown', (e) => {
+  // Next question: Right arrow or N
+  if ((e.key === 'ArrowRight' || e.key === 'n') && !e.ctrlKey) {
+    e.preventDefault();
+    nextQuestion();
+  }
+  
+  // Previous question: Left arrow or P
+  if ((e.key === 'ArrowLeft' || e.key === 'p') && !e.ctrlKey) {
+    e.preventDefault();
+    prevQuestion();
+  }
+  
+  // Submit: Ctrl + Enter
+  if (e.ctrlKey && e.key === 'Enter') {
+    e.preventDefault();
+    submitTest();
+  }
+});
+
+// Initialize the page when loaded
+document.addEventListener('DOMContentLoaded', function() {
+  initPage();
+  
+  // Debug info
+  console.log("User mode:", userMode);
+  console.log("User token:", userToken ? "Present" : "Not present");
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Admin Panel</title>
+<style>
+body{
+  font-family: Arial;
+  background:#020617;
+  color:#e5e7eb;
+  padding:40px;
+}
+.card{
+  max-width:400px;
+  margin:auto;
+  background:#020617;
+  border:1px solid #1f2933;
+  padding:30px;
+  border-radius:10px;
+}
+input,button{
+  width:100%;
+  padding:12px;
+  margin-top:10px;
+  border-radius:6px;
+  border:none;
+}
+input{
+  background:#020617;
+  border:1px solid #374151;
+  color:white;
+}
+button{
+  background:#22c55e;
+  color:#020617;
+  font-weight:bold;
+  cursor:pointer;
+}
+.logout{
+  background:#ef4444;
+  margin-top:20px;
+}
+</style>
+</head>
+
+<body>
+
+<script>
+if(!localStorage.getItem("admin_token")){
+  alert("Admin login required");
+  window.location.href = "admin-login.html";
+}
+</script>
+
+<div class="card">
+  <h2>Add New User</h2>
+
+  <input id="newuser" placeholder="Username">
+  <input id="newpass" placeholder="Password">
+
+  <button onclick="addUser()">Add User</button>
+  <button class="logout" onclick="logout()">Logout</button>
+</div>
+
+<script>
+async function addUser(){
+  const res = await fetch("http://127.0.0.1:5000/admin/add-user",{
+    method:"POST",
+    headers:{ "Content-Type":"application/json" },
+    body:JSON.stringify({
+      user:document.getElementById("newuser").value,
+      pass:document.getElementById("newpass").value
+    })
+  });
+
+  const data = await res.json();
+  alert("User added: " + data.added);
+}
+
+function logout(){
+  localStorage.removeItem("admin_token");
+  window.location.href="admin-login.html";
+}
+</script>
+
+</body>
+</html>

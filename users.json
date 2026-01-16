@@ -1,0 +1,30 @@
+{
+  "demo": {
+    "password": "demo",
+    "token": ""
+  },
+  "daniyal": {
+    "password": "waheed",
+    "token": "8f33b72a-43bf-4d8e-b2ba-ea2ac2f840ad"
+  },
+  "maham": {
+    "password": "roshan",
+    "token": "4bd8944f-a3e4-4030-a19b-fd8019aced8a"
+  },
+  "zaviyal": {
+    "password": "waheed",
+    "token": "f5f9ca67-9374-409d-a087-0ae16a058ded"
+  },
+  "mushtaq": {
+    "password": "12345",
+    "token": "5891c53c-a629-4a9f-baed-bde7ed623887"
+  },
+  "zavi": {
+    "password": "12345",
+    "token": "e82a2683-8f10-4ff7-9712-ba06a9b7b062"
+  },
+  "amina": {
+    "password": "fayyaz",
+    "token": "632f3e8b-48c0-4601-8849-c21c71fcde67"
+  }
+}

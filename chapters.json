@@ -1,0 +1,226 @@
+{
+  "chapter1": {
+    "name": "introdution to the legal system",
+    "questions": [
+      {
+        "id": "q1768321499850",
+        "marks": 5,
+        "text": "what is meant by legal system?"
+      },
+      {
+        "id": "q176854896872092j0l5pad",
+        "text": "distingusih between law and criminal",
+        "marks": 5
+      }
+    ]
+  },
+  "chapter2": {
+    "name": "Offer and Acceptance",
+    "questions": []
+  },
+  "chapter3": {
+    "name": "Validity of Contracts",
+    "questions": [
+      {
+        "id": "q1767890835556",
+        "text": "C is called to be a witness in a court trial for G, who promises to pay C some money for the trouble.\nAfter the trial, G doesn't pay C as promised. C decides to sue G to get the money. Is C entitled to get the\nmoney that G promised? (03)\n(b) Akram and Wasim are neighbors in a small town. They have known each other for years and often\nengage in trade. One day, they decide to enter into an agreement. Akram promises to pay Wasim Rs.1,000\nin exchange for goods that Wasim would deliver later. The agreement states that Wasim could either deliver\nrice, which is a legal item, or smuggled opium, which is illegal.\nRequirement:\nIs the agreement between Akram and Wasim legally enforceable? (03)",
+        "marks": "6"
+      },
+      {
+        "id": "q1767890854566",
+        "text": "Kedar Nath is the secretary of a community organization in Howrah, responsible for building a new Town\nHall. Gorie Mohammad, a local businessman, agrees to contribute Rs. 100,000 to help with the\nconstruction. Trusting Gorie's promise, Kedar Nath signs a contract with Sunil Construction Co., a local\ncontractor. The contract stipulates that the Town Hall will be completed within six months, and payment\nwill be made in four installments.\nAfter the first installment is paid, Gorie Mohammad decides he no longer wants to contribute his promised\nRs. 100. Kedar Nath is now concerned about how to meet the future payments to the contractor. He\nbelieves Gorie should be held accountable for his original promise.\nRequirement:\nIs Gorie Mohammad legally obligated to pay the Rs. 100,000 he promised towards the construction of the\nTown Hall? (03)",
+        "marks": "3"
+      },
+      {
+        "id": "q1767890934743",
+        "text": "Azam runs a busy accounting firm in a bustling city. He's been looking for a qualified accountant to help\nhim manage the increasing workload. After interviewing several candidates, he hires Babar for the position.\nDuring the hiring process, Azam tells Babar, \"I promise to make you happy here.\" Babar is thrilled and\nimmediately resigns from his old job to start work at Azam's firm.\nRequirement:\nBased on the Contract Act 1872, is Azam's promise legally binding? (03)",
+        "marks": "3"
+      },
+      {
+        "id": "q1767890998829",
+        "text": "Azam owns a two-story house located in the prime residential area of the city. Babar, interested in buying a\nproperty, approaches Azam. After some discussions, Azam agrees to sell the house to Babar for Rs.\n10,000,000. However, they make an additional agreement: if Babar uses the house for gambling activities,\nthen the price for the house will be Rs. 50,000,000 instead of Rs. 10,000,000.\nRequirement:\nDiscuss the enforceability of this agreement between Azam and Babar under the Contract Act 1872. (03",
+        "marks": "3"
+      },
+      {
+        "id": "q1767891019593",
+        "text": "(a) Two crew members left a ship during its trip from London to the Baltic and back. The captain couldn't\nfind replacements, so he told the remaining crew that if they worked extra hard to get the ship back home,\nthey would get the pay of the two who left. Was the captain's promise legally binding? (03)",
+        "marks": "3"
+      },
+      {
+        "id": "q1767891048110",
+        "text": "A minor fraudulently represented to moneylender that he was of full age, and obtained a loan of Rs.\n10,000. Has the money lender any right of action against the minor for the money lent or for damages of\nfraudulent representation? (04)",
+        "marks": "4"
+      },
+      {
+        "id": "q1767891063512",
+        "text": "In case of each of the following situations, state the conditions, as specified under the Contract Act, 1872\nwhich must be fulfilled to make a binding contract.\n(i) In February 2014, Raheel promised to pay Rs. 300,000 to Sameer against a debt of Rs. 500,000 which\nwas due for payment in March 2010. (03)\n(ii) Shazia promised to pay Rs. 100,000 to her brother Rauf on account of his University fees for three years.\n(03)",
+        "marks": "6"
+      },
+      {
+        "id": "q1767891084430",
+        "text": "State whether a valid contract is created in following cases. Also state brief reason.\n(a) A finds B's purse and gives it to him. B promises to give ARs.50.\n(b) A rescued B from drowning in the river, and B, appreciating the service that has been rendered, promises\nto pay Rs.1,000 to A.\n(c) A supports B\u2019s infant son. B promises to pay A's expenses in so doing.\n(d) A for natural love and affection, promises to give his son B,Rs.1,000. A puts his promise to B into\nwriting and registers it.\n(e) A registered agreement, whereby an elder brother, on account of natural love and affection, promised to\npay the debts of his younger brother.\n(f) A husband, after referring to quarrels and disagreement between him and his wife, executed a registered\ndocument in favour of his wife, agreeing to pay for separate residence and maintenance. (06)",
+        "marks": "6"
+      }
+    ]
+  },
+  "chapter4": {
+    "name": "Free Consent",
+    "questions": [
+      {
+        "id": "q1767891877936",
+        "text": "When a contract is said to be induced by undue influence and under what circumstances a person is deemed\nto be in a position to dominate the will of other person? (05)",
+        "marks": 5
+      },
+      {
+        "id": "q1767891895156",
+        "text": "Briefly discuss the concept of \u201cconsensus ad idem\u201d. (03)",
+        "marks": "3"
+      },
+      {
+        "id": "q1767891937107",
+        "text": "Define coercion. What is the difference between coercion and undue influence? (07)",
+        "marks": "7"
+      },
+      {
+        "id": "q1767891953820",
+        "text": "Define consent for the purpose of a contract? The consent is said to be \u2018Free\u2019 when it is not caused by\ncertain factors specified in Contract Act, 1872. List those factors. (04)",
+        "marks": "4"
+      },
+      {
+        "id": "q1767892012729",
+        "text": "Jannat Bibi is a wealthy old widow who owns 3 bungalows in Lahore. Until recently she suffered from\nhallucination that she was pursued by demons. About two months ago she enrolled herself for the treatment\noffered by a Spiritual Adviser.\nWhilst she was receiving treatment as a resident at the Spiritual Adviser\u2019s house, he told her that he needed\na bungalow to house the persons seeking his treatment and impressed upon her that her assistance was\nrequired in this matter. This prompted Jannat Bibi to state that she would help the Spiritual Adviser as soon\nas she recovered from her ailment. She returned home last week.\nA day after she returned home she signed a contract prepared by die Spiritual Adviser\u2019s lawyer agreeing to\nsell one of her bungalows in Lahore to Spiritual Adviser for Rs. 8 million. The market value of the\nbungalow\u2019 is Rs.20 million. Now\u2019 she says that she regrets having signed the contract and seeks your advice\nwhether she could avoid the contract on any ground.\nAdvise Jannat Bibi. (05)",
+        "marks": 5
+      },
+      {
+        "id": "q1767892117604",
+        "text": "Explain in the following scenarios whether Party A has committed fraud with Party B or not. (05)\n(a) Mr. A sold a car by Auction to Mr. B which was damaged in an accident and repaired by Mr. A. Mr. A\ndid not disclose this fact to Mr. B\n(b) Mr. A's car was damaged in an accident and repaired by him. Mr. B purchased car from Mr. A on a\ncondition that major repair was not carried out in Past. Mr. A said nothing. ",
+        "marks": 5
+      },
+      {
+        "id": "q1767892123029",
+        "text": "What will be the effect on a contract, if one party to the contract remains silent on a fact which is likely to\naffect the willingness of the other party to enter into the contract? You are required to explain the above\nwith the help of suitable examples. (04)",
+        "marks": "4"
+      },
+      {
+        "id": "q1767892141462",
+        "text": "Taimur, the owner of a super store, wishes to sell his business which includes the goodwill and the lease of\nthe business premises. In January 2010, he enters into negotiations with Saeed who has just arrived in\nPakistan with his life savings. Taimur tells him that the profits over the last 5 years have just averaged Rs. 2\nmillion per annum. He offers to allow Saeed to inspect the annual accounts but Saeed refuses to do so. The\nnegotiations go on for a further 3 months.\nOn 1st May 2010, Taimur states that in his opinion, that business has an extremely profitable future. On 1st\nJune 2010, Saeed enters into a contract with Taimur whereby the business, including the goodwill and the\nlease of the premises are transferred to Saeed for Rs.20 million. On 14th June 2010, Saeed realizes the true\nstate of affairs. He also discovered that the average profit for the previous 5 years was only Rs. 1 million per\nannum Discuss the position of both parties. Support your answer with legal arguments. (06)",
+        "marks": "6"
+      },
+      {
+        "id": "q1767892161382",
+        "text": "Comment on legality and enforceability of agreement in each of the following situations:\n(a) Kamil and Raza agree that Kamil shall sell a house to Raza for Rs. 2,000,000 but if Raza uses it as\ngambling house, Raza will pay Rs. 4,000,000 for it. (04)\n(b) A & B carried on business in a certain locality in Karachi. A promised to stop business in that locality, if B\npays him Rs. 100,000. A stopped its business but B did not pay him the promised money. (03",
+        "marks": "9"
+      },
+      {
+        "id": "q1767892183932",
+        "text": "Shamsila, a specialist doctor is running a hospital in Lahore. She employed another lady doctor Rizwana, as\na physician for a period of three years on a salary of Rs.20,000 per month.\nThe agreement between Dr. Shamsila and Dr Rizwana provided that after the termination of her\nemployment Dr. Rizwana should not practice as a doctor in Lahore within a radius of 20 kilometers of her\nhospital for a period of one year, and if Dr. Rizwana did so, she should pay Rs.240,000 (one year salary) to\nDr. Shamsila\u2019s hospital as \u201cliquidated damages\u201d.\nImmediately after the completion of her contract, Dr. Rizwana begins to practice as a physician next door to\nDr. Shamsila\u2019s hospital. Dr. Shamsila sued Dr. Rizwana for the recovery of Rs. 240,000.\nYou are required to answer the relevant provisions of law along with reasons whether Dr. Shamsila will be\nable to recover the liquidated damages from Dr. Rizwana or not. (04)",
+        "marks": "4"
+      },
+      {
+        "id": "q1767892203764",
+        "text": "Briefly explain whether there is valid agreement in following cases:\n(a) A and B entered into an agreement whereby they agreed that neither of them would appeal against the\ntrial court\u2019s decision in respect of dispute between them.\n(b) A promised to buy a horse from B for Rs. 2,000 if the horse proved lucky.\n(c) Two co-widows made an agreement that if any of them remarried, she should forfeit her right to her share\nin the deceased husband\u2019s property. (06)",
+        "marks": "6"
+      }
+    ]
+  },
+  "chapter5": {
+    "name": "Contingent Contracts",
+    "questions": [
+      {
+        "id": "q1767937249474",
+        "text": "Briefly describe the rules regarding the enforcement of different kinds of contingent contracts. (06)",
+        "marks": "6"
+      },
+      {
+        "id": "q1767937332452",
+        "text": "State whether following are contingent contract or otherwise. Please also explain that in case of contingent\ncontract when it will be enforceable by law.\ni) A agrees to pay B Rs. 50,000 if he proves that two straight lines can enclose a space.\nii) A agrees to construct a building for B for Rs. 1,000,0000 on the condition that the payment will be made\non completion of building.\niii) A agrees to sell his house to B for Rs. 100,000 if his father does not return within two years from United\nStates of America.\niv) A agrees to pay Rs. 2,000 to B, if B marries C. B marries D, but after a month D dies, and B marries C.\n(06)",
+        "marks": "6"
+      }
+    ]
+  },
+  "chapter6": {
+    "name": "Performance of Contracts-1",
+    "questions": [
+      {
+        "id": "q1768022370302",
+        "text": "Effective 1 July 2019, Arowana Power Limited (APL) started purchasing fuel from Sauger\nLimited (SL). Up to 31 May 2021, APL did not make any payment to SL due to which late\npayment surcharge was invoiced to APL. APL refused to acknowledge the surcharge and asked\nfor its cancellation but SL never responded. APL stopped purchasing fuel from SL with effect\nfrom 15 June 2021.\nIn July 2021, APL made two bulk payments equivalent to the cost of fuel purchased from 1 July\n2019 to 15 June 2021 but did not mention the invoices against which the payments were to be\nadjusted.\nIn August 2021, APL came to know that SL had first adjusted the late payment surcharge and\nbalance amount had been adjusted against cost of fuel. APL demands that SL should adjust the\npayments against cost of fuel only and not against the surcharge.\nUnder the provisions of the Contract Act 1872 discuss the validity of APL\u2019S demand and\nadjustment made by SL. (04)",
+        "marks": "4"
+      },
+      {
+        "id": "q1768022428150",
+        "text": "Under the provision of Contract Act, 1872, briefly describe the different situations whereby a\ncontract is discharged by mutual agreement. (10)",
+        "marks": "10"
+      },
+      {
+        "id": "q1768022445157",
+        "text": "Danish owes a sum of Rs. 100,000 to Adil against three different agreements. In March 2008,\nDanish sent a cheque of Rs. 70,000 and Adil appropriated the amount in the following manner:\nYear of agreement Amount Rupees Appropriation by Adil\n2005 20,000 20,000\n2006 40,000 10,000\n2007 40,000 40,000\nTotal 100,000 70,000\nThe loan taken in 2006 has been guaranteed by Feroze who has demanded that Adil must\nappropriate Rs. 40,000 against the debt guaranteed by him. Explain whether Adil is bound to\naccept Feroze\u2019s point of view. (04)",
+        "marks": "4"
+      },
+      {
+        "id": "q1768022479280",
+        "text": "Bushra enterd into a contract with Akhtar, the manager of a radio programme, to conduct a\nshow, twice a week, during the next three months. Bushra did not appear for the sixth show. She\nconducted the next show but soon thereafter Akhtar rescinded the contract and informed her that\nher services were no longer required as she failed to conduct the sixth show. Narrate the rights of\nAkhtar and Bushra in the above situation. (05)",
+        "marks": 5
+      }
+    ]
+  },
+  "chapter7": {
+    "name": "Performance of Contracts-2",
+    "questions": [
+      {
+        "id": "q1768022513016",
+        "text": " Briefly describe the rules specified in the Contract Act, 1872 in respect of the following.\n(i) Time and place for performance where these have not been specified in the contract; (03)\n(ii) Effect of release by promisee of one of the joint promisors. (02)",
+        "marks": 5
+      },
+      {
+        "id": "q1768022560315",
+        "text": "Under the provisions of the Contract Act 1872, explain any four rules regarding the performance of\nreciprocal promises. (04)",
+        "marks": "4"
+      },
+      {
+        "id": "q1768022575917",
+        "text": "In November 2021, Farhan, Noman and Salman established a hotel in Swat. For the day-to-day operations\nof the hotel they jointly borrowed Rs. 600,000 from Danish for a period of six months.\nUnder the provisions of the Contract Act, 1872 discuss the following:\n(a) Can Danish recover the loan only from Noman on the due date? (02)\n(b) Can Danish recover the loan if Farhan, Noman and Salman die before the due date? (02)\n(c) Can Farhan be held liable for the loan, if Danish releases him before the due date? (02)",
+        "marks": "6"
+      },
+      {
+        "id": "q1768022594765",
+        "text": "Saiqa and Alia decided to open a tailoring shop. To manage the opening expenses, they jointly borrowed\nRs. 300,000 from Faizan on 28 February 2022. The loan was to be repaid on 28 February 2023.\nUnder the provisions of the Contract Act, 1872, advise the respective positions of Faizan and Saiqa in\nrespect of the loan amount, in each of the following independent situations:\n(i) On the due date, Saiqa approached Faizan and paid back Rs. 150,000 mentioning that she has paid\nher share and now he should claim the remaining amount from Alia. Faizan met Alia for recovery\nof the remaining loan amount but she refused to pay it. (03)\n(ii) On the due date, Alia approached Faizan and informed him that she cannot pay the loan as the\nentire amount was utilized by Saiqa. Alia also mentioned that Saiqa has refused to give Alia her\nshare in the shop. Considering the situation, Faizan released Alia in respect of the loan. (02)",
+        "marks": 5
+      }
+    ]
+  },
+  "chapter8": {
+    "name": "Certain relations resembling those created by contract",
+    "questions": [
+      {
+        "id": "q1768022653001",
+        "text": "Under the provisions of the Contract Act, 1872 describe constructive contracts and identify the circumstances\nin which a constructive contract may be formed. (05)",
+        "marks": 5
+      },
+      {
+        "id": "q1768022705891",
+        "text": " In case of each of the following situations, state the conditions, as specified under the Contract Act, 1872\nwhich must be fulfilled to make a binding contract.\n(i) In February 2014, Raheel promised to pay Rs. 300,000 to Sameer against a debt of Rs. 500,000 which was\ndue for payment in March 2010. (03)\n(ii) Shazia promised to pay Rs. 100,000 to her brother Rauf on account of his University fees for three years.\n(03)",
+        "marks": "6"
+      },
+      {
+        "id": "q1768022739266",
+        "text": " Maya paid the electricity bill of her neighbour Wasi to avoid disconnection. Later, she claimed the amount\nof the bill from Wasi. Explain whether Maya is entitled for the claim. (04)",
+        "marks": "4"
+      },
+      {
+        "id": "q1768022766729",
+        "text": "Under the provisions of Contract Act, 1872, what are the duties of the finder of lost goods? Under what\nconditions a finder of goods can exercise his right of sale? (03)",
+        "marks": "3"
+      },
+      {
+        "id": "q1768022788290",
+        "text": "Imran contracted with Yousuf for taking bricks to the second floor of Yousuf\u2019s under construction house.\nHowever, stairs to the second floor were blocked as Yousuf had dumped some construction materials on the\nstairs. Discuss the rights of Imran. (03)",
+        "marks": "3"
+      },
+      {
+        "id": "q1768022827469",
+        "text": "Imran contracted with Yousuf for taking bricks to the second floor of Yousuf\u2019s under construction house.\nHowever, stairs to the second floor were blocked as Yousuf had dumped some construction materials on the\nstairs. Discuss the rights of Imran. (03)",
+        "marks": "3"
+      }
+    ]
+  }
+}

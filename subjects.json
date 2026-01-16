@@ -1,0 +1,34 @@
+{
+  "CAF-1": {
+    "name": "Financial Accounting and Reporting-I",
+    "chapters": {}
+  },
+  "CAF-2": {
+    "name": "Tax Practices",
+    "chapters": {}
+  },
+  "CAF-3": {
+    "name": "Cost and Management Accounting",
+    "chapters": {}
+  },
+  "CAF-4": {
+    "name": "Business Law",
+    "chapters": {}
+  },
+  "CAF-5": {
+    "name": "Financial Accounting and Reporting-II",
+    "chapters": {}
+  },
+  "CAF-6": {
+    "name": "Managerial and Financial Analysis",
+    "chapters": {}
+  },
+  "CAF-7": {
+    "name": "Company Law",
+    "chapters": {}
+  },
+  "CAF-8": {
+    "name": "Audit and Assurance",
+    "chapters": {}
+  }
+}

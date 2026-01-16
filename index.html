@@ -2,67 +2,951 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>AI ICAP Examiner</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI CAF Examiner | Smart Exam Preparation</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary: #22c55e;
+  --secondary: #38bdf8;
+  --dark: #020617;
+  --card-bg: rgba(2, 6, 23, 0.85);
+  --text-light: #e5e7eb;
+  --text-gray: #9ca3af;
+  --border-color: rgba(255, 255, 255, 0.1);
+}
+
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #0f172a;
-    color: white;
+  font-family: 'Inter', sans-serif;
+  background: var(--dark);
+  color: var(--text-light);
+  overflow-x: hidden;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
 }
+
+/* Enhanced Animated Background */
+.bg-animation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.bg-circle {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.3;
+  animation: float 20s infinite linear;
+}
+
+.circle-1 {
+  width: 500px;
+  height: 500px;
+  background: var(--primary);
+  top: -200px;
+  left: -100px;
+  animation-delay: 0s;
+}
+
+.circle-2 {
+  width: 400px;
+  height: 400px;
+  background: var(--secondary);
+  bottom: -150px;
+  right: -100px;
+  animation-delay: -5s;
+}
+
+.circle-3 {
+  width: 300px;
+  height: 300px;
+  background: #8b5cf6;
+  top: 50%;
+  right: 20%;
+  animation-delay: -10s;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  animation: particle-float 15s infinite linear;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-30px) rotate(120deg);
+  }
+  66% {
+    transform: translateY(30px) rotate(240deg);
+  }
+}
+
+@keyframes particle-float {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(100px);
+    opacity: 0;
+  }
+}
+
+/* Navbar with animation */
+.navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 40px;
+  backdrop-filter: blur(10px);
+  background: rgba(2, 6, 23, 0.7);
+  border-bottom: 1px solid var(--border-color);
+  animation: slideDown 0.8s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.logo {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-icon {
+  color: var(--primary);
+  font-size: 28px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+}
+
+.nav-link {
+  color: var(--text-gray);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s;
+  position: relative;
+}
+
+.nav-link:hover {
+  color: var(--text-light);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--primary);
+  transition: width 0.3s;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Main Content */
 .container {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+.card {
+  width: 100%;
+  max-width: 850px;
+  padding: 70px 60px;
+  border-radius: 28px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 40px 120px rgba(0, 0, 0, 0.7);
+  text-align: center;
+  animation: fadeInUp 1s ease-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 h1 {
-    font-size: 40px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 56px;
+  margin: 0 0 24px;
+  font-weight: 700;
+  line-height: 1.2;
 }
-p {
-    font-size: 18px;
-    max-width: 600px;
-    opacity: 0.9;
+
+.gradient-text {
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  position: relative;
 }
+
+.subtitle {
+  font-size: 20px;
+  color: var(--text-gray);
+  line-height: 1.7;
+  margin-bottom: 45px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Features Section */
+.features {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin: 50px 0;
+  flex-wrap: wrap;
+}
+
+.feature {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 25px;
+  width: 180px;
+  transition: all 0.3s;
+  border: 1px solid transparent;
+}
+
+.feature:hover {
+  transform: translateY(-10px);
+  border-color: var(--primary);
+  box-shadow: 0 15px 30px rgba(34, 197, 94, 0.15);
+}
+
+.feature-icon {
+  font-size: 32px;
+  color: var(--primary);
+  margin-bottom: 15px;
+}
+
+.feature-title {
+  font-weight: 600;
+  margin-bottom: 8px;
+  font-size: 17px;
+}
+
+.feature-desc {
+  font-size: 13px;
+  color: var(--text-gray);
+}
+
+/* Buttons with animation */
 .buttons {
-    margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 40px;
 }
-button {
-    padding: 12px 30px;
-    margin: 10px;
-    border: none;
-    border-radius: 6px;
-    font-size: 16px;
-    cursor: pointer;
+
+.button {
+  padding: 18px 45px;
+  border-radius: 14px;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  position: relative;
+  overflow: hidden;
 }
-.login {
-    background: white;
-    color: black;
+
+.button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.5);
+  opacity: 0;
+  border-radius: 100%;
+  transform: scale(1, 1) translate(-50%);
+  transform-origin: 50% 50%;
 }
-.try {
-    background: #22c55e;
-    color: black;
+
+.button:focus:not(:active)::after {
+  animation: ripple 1s ease-out;
 }
-button:hover {
-    opacity: 0.9;
+
+@keyframes ripple {
+  0% {
+    transform: scale(0, 0);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(30, 30);
+    opacity: 0;
+  }
+}
+
+.primary {
+  background: var(--primary);
+  color: #022c22;
+}
+
+.primary:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(34, 197, 94, 0.4);
+}
+
+.secondary {
+  background: transparent;
+  color: var(--text-light);
+  border: 1px solid #374151;
+}
+
+.secondary:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  transform: translateY(-5px);
+}
+
+.demo-info {
+  margin-top: 30px;
+  font-size: 14px;
+  color: var(--text-gray);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.demo-info i {
+  color: var(--primary);
+}
+
+/* New Stats Section */
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 50px;
+  flex-wrap: wrap;
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat-number {
+  font-size: 42px;
+  font-weight: 700;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 14px;
+  color: var(--text-gray);
+  margin-top: 5px;
+}
+
+/* Notification Bell */
+.notification-bell {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: rgba(2, 6, 23, 0.9);
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 100;
+  transition: all 0.3s;
+  animation: pulse 2s infinite;
+}
+
+.notification-bell:hover {
+  background: rgba(34, 197, 94, 0.2);
+  transform: scale(1.1);
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(34, 197, 94, 0);
+  }
+}
+
+.bell-icon {
+  font-size: 22px;
+  color: var(--primary);
+}
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(5px);
+}
+
+.modal-content {
+  background: var(--card-bg);
+  border-radius: 20px;
+  padding: 40px;
+  width: 90%;
+  max-width: 500px;
+  border: 1px solid var(--border-color);
+  animation: modalIn 0.5s ease-out;
+}
+
+@keyframes modalIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.modal-title {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.close-modal {
+  background: none;
+  border: none;
+  color: var(--text-gray);
+  font-size: 28px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.close-modal:hover {
+  color: var(--text-light);
+}
+
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--text-gray);
+  font-weight: 500;
+}
+
+.form-input {
+  width: 100%;
+  padding: 14px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+  color: var(--text-light);
+  font-size: 16px;
+  transition: all 0.3s;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+  .card {
+    padding: 50px 40px;
+  }
+  
+  h1 {
+    font-size: 46px;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 15px;
+  }
+  
+  .navbar {
+    padding: 18px 20px;
+  }
+  
+  .nav-links {
+    gap: 20px;
+  }
+  
+  h1 {
+    font-size: 38px;
+  }
+  
+  .card {
+    padding: 40px 30px;
+  }
+  
+  .features {
+    gap: 15px;
+  }
+  
+  .feature {
+    width: 160px;
+    padding: 20px;
+  }
+  
+  .button {
+    padding: 16px 30px;
+  }
+  
+  .stats {
+    gap: 30px;
+  }
+  
+  .stat-number {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+  }
+  
+  .nav-links {
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  h1 {
+    font-size: 32px;
+  }
+  
+  .subtitle {
+    font-size: 18px;
+  }
+  
+  .feature {
+    width: 140px;
+  }
+  
+  .buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .button {
+    width: 100%;
+    max-width: 280px;
+  }
+  
+  .stats {
+    gap: 20px;
+  }
+  
+  .stat-number {
+    font-size: 32px;
+  }
 }
 </style>
 </head>
 <body>
-
-<div class="container">
-    <h1>AI ICAP Exam Practice</h1>
-    <p>
-        Practice ICAP style exam papers and get your answers checked by AI like a real examiner.
-    </p>
-
-    <div class="buttons">
-        <button class="login" onclick="location.href='dashboard.html'">Login</button>
-        <button class="try" onclick="location.href='dashboard.html'">Try Free Paper</button>
-    </div>
+<!-- Animated Background -->
+<div class="bg-animation">
+  <div class="bg-circle circle-1"></div>
+  <div class="bg-circle circle-2"></div>
+  <div class="bg-circle circle-3"></div>
+  <!-- Generate particles dynamically with JS -->
 </div>
 
+<!-- Navigation -->
+<nav class="navbar">
+  <div class="logo">
+    <i class="fas fa-brain logo-icon"></i>
+    <span>AI CAF Examiner</span>
+  </div>
+  <div class="nav-links">
+    <a href="#" class="nav-link">Home</a>
+    <a href="#" class="nav-link">Features</a>
+    <a href="#" class="nav-link">Chapters</a>
+    <a href="#" class="nav-link">About</a>
+  </div>
+</nav>
+
+<!-- Main Content -->
+<div class="container">
+  <div class="card">
+    <h1>
+      Smarter CAF Preparation  
+      <span class="gradient-text">Starts Here</span>
+    </h1>
+    
+    <p class="subtitle">
+      Practice CAF exams chapter-wise with an intelligent system that adapts to your learning style, tracks progress, and simulates real exam conditions to maximize your success.
+    </p>
+    
+    <!-- Features Section -->
+    <div class="features">
+      <div class="feature">
+        <div class="feature-icon">
+          <i class="fas fa-chart-line"></i>
+        </div>
+        <div class="feature-title">Progress Tracking</div>
+        <div class="feature-desc">Monitor your improvement with detailed analytics</div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">
+          <i class="fas fa-robot"></i>
+        </div>
+        <div class="feature-title">AI-Powered</div>
+        <div class="feature-desc">Adaptive questions based on your performance</div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">
+          <i class="fas fa-clock"></i>
+        </div>
+        <div class="feature-title">Time Trials</div>
+        <div class="feature-desc">Simulate real exam timing conditions</div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">
+          <i class="fas fa-trophy"></i>
+        </div>
+        <div class="feature-title">Achievements</div>
+        <div class="feature-desc">Earn badges for milestones and streaks</div>
+      </div>
+    </div>
+    
+    <!-- Stats Section -->
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-number" id="questions-stat">5000+</div>
+        <div class="stat-label">Practice Questions</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number" id="users-stat">2500+</div>
+        <div class="stat-label">Active Users</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number" id="success-stat">94%</div>
+        <div class="stat-label">Success Rate</div>
+      </div>
+    </div>
+    
+    <!-- Action Buttons -->
+    <div class="buttons">
+      <button class="button primary" onclick="startDemo()">
+        <i class="fas fa-play-circle"></i>
+        Start Free Demo
+      </button>
+      <button class="button secondary" onclick="showLoginModal()">
+        <i class="fas fa-sign-in-alt"></i>
+        Login
+      </button>
+    </div>
+    
+    <div class="demo-info">
+      <i class="fas fa-info-circle"></i>
+      Demo mode unlocks Chapter 1 with full functionality
+    </div>
+  </div>
+</div>
+
+<!-- Notification Bell -->
+<div class="notification-bell" onclick="showNotification()">
+  <i class="fas fa-bell bell-icon"></i>
+</div>
+
+<!-- Login Modal -->
+<div class="modal" id="loginModal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <div class="modal-title">Welcome Back</div>
+      <button class="close-modal" onclick="closeLoginModal()">&times;</button>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="username">Username</label>
+      <input type="text" id="username" class="form-input" placeholder="Enter your username">
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="password">Password</label>
+      <input type="password" id="password" class="form-input" placeholder="Enter your password">
+    </div>
+    <div class="buttons">
+      <button class="button primary" onclick="loginUser()">
+        <i class="fas fa-sign-in-alt"></i>
+        Login
+      </button>
+      <button class="button secondary" onclick="signUpUser()">
+        <i class="fas fa-user-plus"></i>
+        Sign Up
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+// Generate floating particles
+function createParticles() {
+  const bgAnimation = document.querySelector('.bg-animation');
+  for (let i = 0; i < 30; i++) {
+    const particle = document.createElement('div');
+    particle.classList.add('particle');
+    
+    // Random position
+    particle.style.left = `${Math.random() * 100}%`;
+    particle.style.top = `${Math.random() * 100}%`;
+    
+    // Random size
+    const size = Math.random() * 6 + 2;
+    particle.style.width = `${size}px`;
+    particle.style.height = `${size}px`;
+    
+    // Random animation delay and duration
+    const delay = Math.random() * 15;
+    const duration = Math.random() * 10 + 10;
+    particle.style.animationDelay = `${delay}s`;
+    particle.style.animationDuration = `${duration}s`;
+    
+    bgAnimation.appendChild(particle);
+  }
+}
+
+// Animated stats counter
+function animateStats() {
+  const questionsStat = document.getElementById('questions-stat');
+  const usersStat = document.getElementById('users-stat');
+  const successStat = document.getElementById('success-stat');
+  
+  let questionsCount = 0;
+  let usersCount = 0;
+  let successCount = 0;
+  
+  const questionsTarget = 5000;
+  const usersTarget = 2500;
+  const successTarget = 94;
+  
+  const interval = setInterval(() => {
+    questionsCount += 100;
+    usersCount += 50;
+    successCount += 2;
+    
+    if (questionsCount >= questionsTarget) questionsCount = questionsTarget;
+    if (usersCount >= usersTarget) usersCount = usersTarget;
+    if (successCount >= successTarget) successCount = successTarget;
+    
+    questionsStat.textContent = questionsCount.toLocaleString() + '+';
+    usersStat.textContent = usersCount.toLocaleString() + '+';
+    successStat.textContent = successCount + '%';
+    
+    if (questionsCount >= questionsTarget && 
+        usersCount >= usersTarget && 
+        successCount >= successTarget) {
+      clearInterval(interval);
+    }
+  }, 30);
+}
+
+// Modal functions
+function showLoginModal() {
+  document.getElementById('loginModal').style.display = 'flex';
+}
+
+function closeLoginModal() {
+  document.getElementById('loginModal').style.display = 'none';
+}
+
+// Login function - FIXED VERSION (only one function)
+function loginUser() {
+  const username = document.getElementById('username').value;
+  const password = document.getElementById('password').value;
+  
+  // Demo credentials (hidden from UI but still functional)
+  if (username === 'demo' && password === 'demo123') {
+    localStorage.setItem("mode", "demo");
+    localStorage.removeItem("token");
+    window.location.href = "subjects.html";
+    return;
+  }
+  
+  // Real login
+  fetch("http://127.0.0.1:5000/login", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ username: username, password: password })
+  })
+  .then(r => r.json())
+  .then(d => {
+    if (d.success) {
+      localStorage.setItem("mode", "login");
+      localStorage.setItem("token", d.token);
+      localStorage.setItem("username", username); // Store username for display
+      // Show success message
+      alert("Login successful! All subjects and chapters are now unlocked.");
+      window.location.href = "subjects.html?login=success";
+    } else {
+      alert("Invalid login details. Please try again.");
+    }
+  })
+  .catch(() => {
+    alert("Server unavailable. Using demo mode.");
+    localStorage.setItem("mode", "demo");
+    localStorage.setItem("username", "Demo User");
+    window.location.href = "subjects.html";
+  });
+}
+
+// Demo login
+function startDemo() {
+  localStorage.setItem("mode", "demo");
+  localStorage.removeItem("token");
+  localStorage.setItem("username", "Demo User");
+  
+  // Add animation feedback
+  const button = document.querySelector('.primary');
+  button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading Demo...';
+  button.disabled = true;
+  
+  setTimeout(() => {
+    window.location.href = "subjects.html";
+  }, 1000);
+}
+
+// Sign up function
+function signUpUser() {
+  alert("Sign up functionality would be implemented here. For demo, use username: demo, password: demo123");
+}
+
+// Notification function
+function showNotification() {
+  alert("🔔 New feature: Chapter 2 now available for premium users!");
+}
+
+// Close modal when clicking outside
+window.onclick = function(event) {
+  const modal = document.getElementById('loginModal');
+  if (event.target === modal) {
+    closeLoginModal();
+  }
+}
+
+// Initialize when page loads
+window.onload = function() {
+  createParticles();
+  animateStats();
+  
+  // Add keyboard shortcut for demo (Ctrl + D)
+  document.addEventListener('keydown', function(e) {
+    if (e.ctrlKey && e.key === 'd') {
+      e.preventDefault();
+      startDemo();
+    }
+  });
+}
+</script>
 </body>
 </html>

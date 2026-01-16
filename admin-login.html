@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Admin Login</title>
+<style>
+body{
+  font-family: Arial;
+  background:#020617;
+  color:#e5e7eb;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+}
+.box{
+  background:#020617;
+  border:1px solid #1f2933;
+  padding:40px;
+  border-radius:10px;
+  width:300px;
+}
+input,button{
+  width:100%;
+  padding:12px;
+  margin-top:10px;
+  border-radius:6px;
+  border:none;
+}
+input{
+  background:#020617;
+  border:1px solid #374151;
+  color:white;
+}
+button{
+  background:#22c55e;
+  color:#020617;
+  font-weight:bold;
+  cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+<div class="box">
+  <h2>Admin Login</h2>
+
+  <input id="user" placeholder="Username">
+  <input id="pass" type="password" placeholder="Password">
+
+  <button onclick="login()">Login</button>
+</div>
+
+<script>
+async function login(){
+  const res = await fetch("http://127.0.0.1:5000/admin/login",{
+    method:"POST",
+    headers:{ "Content-Type":"application/json" },
+    body:JSON.stringify({
+      username:document.getElementById("user").value,
+      password:document.getElementById("pass").value
+    })
+  });
+
+  const data = await res.json();
+
+  if(data.success){
+    localStorage.setItem("admin_token",data.admin_token);
+    window.location.href = "admin.html";
+  }else{
+    alert("Invalid admin credentials");
+  }
+}
+</script>
+</body>
+</html>

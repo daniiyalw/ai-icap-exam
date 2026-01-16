@@ -1,0 +1,1291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CAF-4 Business Law | AI ICAP Examiner</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --primary: #22c55e;
+  --primary-dark: #16a34a;
+  --secondary: #3b82f6;
+  --accent: #8b5cf6;
+  --warning: #f59e0b;
+  --dark: #020617;
+  --dark-light: #0f172a;
+  --text: #f8fafc;
+  --text-secondary: #94a3b8;
+  --border: rgba(255, 255, 255, 0.1);
+  --card-bg: rgba(15, 23, 42, 0.7);
+  --shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  --shadow-hover: 0 25px 80px rgba(34, 197, 94, 0.15);
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--dark);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Animated Background */
+.background-animation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.1;
+  animation: float 25s infinite ease-in-out;
+}
+
+.orb-1 {
+  width: 500px;
+  height: 500px;
+  background: var(--primary);
+  top: -150px;
+  left: -100px;
+  animation-delay: 0s;
+}
+
+.orb-2 {
+  width: 400px;
+  height: 400px;
+  background: var(--secondary);
+  bottom: -100px;
+  right: -80px;
+  animation-delay: -8s;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  33% { transform: translateY(-30px) rotate(120deg); }
+  66% { transform: translateY(30px) rotate(240deg); }
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(2, 6, 23, 0.9);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  animation: slideDown 0.6s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-icon {
+  color: var(--primary);
+  font-size: 24px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-weight: 500;
+  transition: all 0.3s;
+  position: relative;
+  padding: 8px 0;
+}
+
+.nav-link:hover {
+  color: var(--text);
+}
+
+.nav-link.active {
+  color: var(--primary);
+}
+
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--primary);
+  border-radius: 2px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.user-mode-badge {
+  background: rgba(34, 197, 94, 0.15);
+  color: var(--primary);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.user-mode-badge.pro {
+  background: rgba(59, 130, 246, 0.15);
+  color: var(--secondary);
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+.user-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+/* Container */
+.container {
+  max-width: 1300px;
+  margin: 40px auto;
+  padding: 0 30px;
+  animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Header */
+.header {
+  margin-bottom: 40px;
+}
+
+.subject-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.subject-info {
+  flex: 1;
+}
+
+h1 {
+  font-size: 38px;
+  font-weight: 800;
+  margin-bottom: 8px;
+  background: linear-gradient(90deg, var(--text), var(--primary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subject-code {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--primary);
+  background: rgba(34, 197, 94, 0.1);
+  padding: 8px 16px;
+  border-radius: 20px;
+  display: inline-block;
+  margin-bottom: 15px;
+}
+
+.subtitle {
+  color: var(--text-secondary);
+  font-size: 18px;
+  line-height: 1.6;
+  max-width: 800px;
+}
+
+/* Subject Stats */
+.subject-stats {
+  display: flex;
+  gap: 30px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.stat-box {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 20px;
+  min-width: 160px;
+  border: 1px solid var(--border);
+}
+
+.stat-value {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--primary);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.stat-label {
+  font-size: 14px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+/* Chapter Navigation */
+.chapter-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.chapter-title {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.chapter-filters {
+  display: flex;
+  gap: 15px;
+}
+
+.filter-btn {
+  padding: 10px 20px;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.filter-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text);
+}
+
+.filter-btn.active {
+  background: rgba(34, 197, 94, 0.15);
+  color: var(--primary);
+  border-color: rgba(34, 197, 94, 0.3);
+}
+
+/* Grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 25px;
+  margin-bottom: 60px;
+}
+
+/* Card */
+.card {
+  background: var(--card-bg);
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  padding: 28px;
+  transition: all 0.4s;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s;
+}
+
+.card:hover::before {
+  transform: scaleX(1);
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  border-color: var(--primary);
+  box-shadow: var(--shadow-hover);
+}
+
+.card.locked {
+  opacity: 0.6;
+  filter: grayscale(0.4);
+}
+
+.card.locked:hover {
+  transform: translateY(-4px);
+  border-color: var(--text-secondary);
+}
+
+/* Card Content */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.chapter-number {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--primary);
+  background: rgba(34, 197, 94, 0.1);
+  padding: 6px 14px;
+  border-radius: 20px;
+}
+
+.lock-icon {
+  color: var(--warning);
+  font-size: 20px;
+  opacity: 0.8;
+}
+
+.unlocked-badge i {
+  color: var(--primary);
+  font-size: 20px;
+}
+
+.card h3 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+
+.card p {
+  color: var(--text-secondary);
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 25px;
+  min-height: 48px;
+}
+
+/* Progress Indicator */
+.chapter-progress {
+  margin-top: 20px;
+}
+
+.progress-text {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.progress-bar {
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  border-radius: 3px;
+  width: 0%;
+  transition: width 1s ease;
+}
+
+/* Button */
+.action-btn {
+  width: 100%;
+  padding: 16px;
+  border-radius: 14px;
+  border: none;
+  background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+  font-size: 15px;
+}
+
+.action-btn:hover:not(.locked) {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px rgba(34, 197, 94, 0.3);
+}
+
+.action-btn.locked {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-secondary);
+  cursor: not-allowed;
+}
+
+.action-btn.locked:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+/* Completion Badge */
+.completion-badge {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(34, 197, 94, 0.2);
+  color: var(--primary);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Coming Soon Banner */
+.coming-soon-banner {
+  text-align: center;
+  padding: 40px;
+  background: rgba(15, 23, 42, 0.5);
+  border-radius: 20px;
+  border: 1px dashed var(--border);
+  margin-top: 40px;
+}
+
+.coming-soon-banner h3 {
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: var(--primary);
+}
+
+.coming-soon-banner p {
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto 25px;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 30px;
+  color: var(--text-secondary);
+  font-size: 14px;
+  border-top: 1px solid var(--border);
+  margin-top: 60px;
+}
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 18px 20px;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .nav-links {
+    gap: 15px;
+  }
+  
+  .container {
+    padding: 0 20px;
+  }
+  
+  h1 {
+    font-size: 32px;
+  }
+  
+  .subject-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .chapter-filters {
+    gap: 10px;
+  }
+  
+  .filter-btn {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+  
+  .subject-stats {
+    gap: 15px;
+  }
+  
+  .stat-box {
+    min-width: 140px;
+    padding: 16px;
+  }
+  
+  .stat-value {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 28px;
+  }
+  
+  .card {
+    padding: 22px;
+  }
+  
+  .card h3 {
+    font-size: 20px;
+  }
+  
+  .action-btn {
+    padding: 14px;
+  }
+}
+</style>
+</head>
+
+<body>
+<!-- Animated Background -->
+<div class="background-animation">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+</div>
+
+<!-- Navbar -->
+<div class="navbar">
+  <div class="logo">
+    <i class="fas fa-scale-balanced logo-icon"></i>
+    <span>AI ICAP Examiner</span>
+  </div>
+  
+  <div class="nav-links">
+    <a href="subjects.html" class="nav-link">Subjects</a>
+    <a href="#" class="nav-link">Progress</a>
+    <a href="#" class="nav-link active">Business Law</a>
+    <a href="#" class="nav-link">Results</a>
+  </div>
+  
+  <div class="user-info">
+    <div class="user-mode-badge" id="userModeBadge">
+      <i class="fas fa-user"></i>
+      <span id="modeText">Demo Mode</span>
+    </div>
+    <div class="user-avatar">
+      <span id="userInitial">D</span>
+    </div>
+  </div>
+</div>
+
+<!-- Main Container -->
+<div class="container">
+  <!-- Header -->
+  <div class="header">
+    <div class="subject-header">
+      <div class="subject-info">
+        <div class="subject-code">CAF-4</div>
+        <h1>Business Law</h1>
+        <p class="subtitle">Master contract law, partnerships, negotiable instruments, and AML through chapter-wise ICAP-style practice questions with AI-powered feedback.</p>
+      </div>
+    </div>
+    
+    <!-- Subject Stats -->
+    <div class="subject-stats">
+      <div class="stat-box">
+        <div class="stat-value">15</div>
+        <div class="stat-label">Chapters</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-value">320+</div>
+        <div class="stat-label">Practice Questions</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-value">18h</div>
+        <div class="stat-label">Learning Content</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-value">94%</div>
+        <div class="stat-label">Avg. Success Rate</div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Chapter Navigation -->
+  <div class="chapter-nav">
+    <div class="chapter-title">Available Chapters</div>
+    <div class="chapter-filters">
+      <button class="filter-btn active" onclick="filterChapters('all')">All Chapters</button>
+      <button class="filter-btn" onclick="filterChapters('unlocked')">Unlocked</button>
+      <button class="filter-btn" onclick="filterChapters('locked')">Locked</button>
+    </div>
+  </div>
+  
+  <!-- Chapters Grid - ALL 15 CHAPTERS SHOWN HERE -->
+  <div class="grid">
+    <!-- Chapter 1 -->
+    <div class="card" data-ch="1">
+      <div class="completion-badge" style="display: none;">
+        <i class="fas fa-check-circle"></i> Completed
+      </div>
+      <div class="card-header">
+        <div class="chapter-number">Chapter 1</div>
+        <div class="unlocked-badge">
+          <i class="fas fa-lock-open"></i>
+        </div>
+      </div>
+      <h3>Introduction to Law</h3>
+      <p>Foundational concepts of law, legal systems, and basic principles governing business transactions.</p>
+      <div class="chapter-progress">
+        <div class="progress-text">
+          <span>Progress</span>
+          <span>0%</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: 0%"></div>
+        </div>
+      </div>
+      <button class="action-btn" onclick="openChapter(1)">
+        <i class="fas fa-play-circle"></i> Start Chapter Test
+      </button>
+    </div>
+    
+    <!-- Chapter 2 -->
+    <div class="card locked" data-ch="2">
+      <div class="card-header">
+        <div class="chapter-number">Chapter 2</div>
+        <div class="lock-icon">
+          <i class="fas fa-lock"></i>
+        </div>
+      </div>
+      <h3>Offer and Acceptance</h3>
+      <p>Essential elements of contract formation, including valid offers, acceptance, and communication rules.</p>
+      <div class="chapter-progress">
+        <div class="progress-text">
+          <span>Progress</span>
+          <span>Locked</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: 0%"></div>
+        </div>
+      </div>
+      <button class="action-btn locked" onclick="showLockedMessage(2)">
+        <i class="fas fa-lock"></i> Login to Unlock
+      </button>
+    </div>
+    
+    <!-- Chapter 3 -->
+    <div class="card locked" data-ch="3">
+      <div class="card-header">
+        <div class="chapter-number">Chapter 3</div>
+        <div class="lock-icon">
+          <i class="fas fa-lock"></i>
+        </div>
+      </div>
+      <h3>Validity of Contracts</h3>
+      <p>Requirements for legally binding contracts, including capacity, consideration, and legality of object.</p>
+      <div class="chapter-progress">
+        <div class="progress-text">
+          <span>Progress</span>
+          <span>Locked</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: 0%"></div>
+        </div>
+      </div>
+      <button class="action-btn locked" onclick="showLockedMessage(3)">
+        <i class="fas fa-lock"></i> Login to Unlock
+      </button>
+    </div>
+    
+    <!-- Chapter 4 -->
+    <div class="card locked" data-ch="4">
+      <div class="card-header">
+        <div class="chapter-number">Chapter 4</div>
+        <div class="lock-icon">
+          <i class="fas fa-lock"></i>
+        </div>
+      </div>
+      <h3>Free Consent</h3>
+      <p>Analysis of consent affected by coercion, undue influence, fraud, misrepresentation, and mistake.</p>
+      <div class="chapter-progress">
+        <div class="progress-text">
+          <span>Progress</span>
+          <span>Locked</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: 0%"></div>
+        </div>
+      </div>
+      <button class="action-btn locked" onclick="showLockedMessage(4)">
+        <i class="fas fa-lock"></i> Login to Unlock
+      </button>
+    </div>
+    
+    <!-- Chapter 5 -->
+    <div class="card locked" data-ch="5">
+      <div class="card-header">
+        <div class="chapter-number">Chapter 5</div>
+        <div class="lock-icon">
+          <i class="fas fa-lock"></i>
+        </div>
+      </div>
+      <h3>Contingent Contracts</h3>
+      <p>Contracts dependent on uncertain future events, their enforcement, and legal implications.</p>
+      <div class="chapter-progress">
+        <div class="progress-text">
+          <span>Progress</span>
+          <span>Locked</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: 0%"></div>
+        </div>
+      </div>
+      <button class="action-btn locked" onclick="showLockedMessage(5)">
+        <i class="fas fa-lock"></i> Login to Unlock
+      </button>
+    </div>
+    
+    <!-- Chapter 6 -->
+    <div class="card locked" data-ch="6">
+      <div class="card-header">
+        <div class="chapter-number">Chapter 6</div>
+        <div class="lock-icon">
+          <i class="fas fa-lock"></i>
+        </div>
+      </div>
+      <h3>Performance of Contracts-1</h3>
+      <p>Obligations of parties, time and place of performance, and application of payments.</p>
+      <div class="chapter-progress">
+        <div class="progress-text">
+          <span>Progress</span>
+          <span>Locked</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: 0%"></div>
+        </div>
+      </div>
+      <button class="action-btn locked" onclick="showLockedMessage(6)">
+        <i class="fas fa-lock"></i> Login to Unlock
+      </button>
+    </div>
+    
+    <!-- Chapter 7 -->
+    <div class="card locked" data-ch="7">
+      <div class="card-header">
+        <div class="chapter-number">Chapter 7</div>
+        <div class="lock-icon">
+          <i class="fas fa-lock"></i>
+        </div>
+      </div>
+      <h3>Performance of Contracts-2</h3>
+      <p>Assignment of contracts, joint promises, and reciprocal promises in contractual relationships.</p>
+      <div class="chapter-progress">
+        <div class="progress-text">
+          <span>Progress</span>
+          <span>Locked</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: 0%"></div>
+        </div>
+      </div>
+      <button class="action-btn locked" onclick="showLockedMessage(7)">
+        <i class="fas fa-lock"></i> Login to Unlock
+      </button>
+    </div>
+    
+    <!-- Chapter 8 -->
+    <div class="card locked" data-ch="8">
+      <div class="card-header">
+        <div class="chapter-number">Chapter 8</div>
+        <div class="lock-icon">
+          <i class="fas fa-lock"></i>
+        </div>
+      </div>
+      <h3>Certain relations resembling those created by contract</h3>
+      <p>Quasi-contracts and obligations resembling contractual duties without formal agreement.</p>
+      <div class="chapter-progress">
+        <div class="progress-text">
+          <span>Progress</span>
+          <span>Locked</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: 0%"></div>
+        </div>
+      </div>
+      <button class="action-btn locked" onclick="showLockedMessage(8)">
+        <i class="fas fa-lock"></i> Login to Unlock
+      </button>
+    </div>
+    
+    <!-- Chapter 9 -->
+    <div class="card locked" data-ch="9">
+      <div class="card-header">
+        <div class="chapter-number">Chapter 9</div>
+        <div class="lock-icon">
+          <i class="fas fa-lock"></i>
+        </div>
+      </div>
+      <h3>Consequences for breach of contract</h3>
+      <p>Remedies available for breach, including damages, specific performance, and injunction.</p>
+      <div class="chapter-progress">
+        <div class="progress-text">
+          <span>Progress</span>
+          <span>Locked</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: 0%"></div>
+        </div>
+      </div>
+      <button class="action-btn locked" onclick="showLockedMessage(9)">
+        <i class="fas fa-lock"></i> Login to Unlock
+      </button>
+    </div>
+    
+    <!-- Chapter 10 -->
+    <div class="card locked" data-ch="10">
+      <div class="card-header">
+        <div class="chapter-number">Chapter 10</div>
+        <div class="lock-icon">
+          <i class="fas fa-lock"></i>
+        </div>
+      </div>
+      <h3>Appointment and authority of agents</h3>
+      <p>Creation of agency relationships, types of authority, and duties of principals and agents.</p>
+      <div class="chapter-progress">
+        <div class="progress-text">
+          <span>Progress</span>
+          <span>Locked</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: 0%"></div>
+        </div>
+      </div>
+      <button class="action-btn locked" onclick="showLockedMessage(10)">
+        <i class="fas fa-lock"></i> Login to Unlock
+      </button>
+    </div>
+    
+    <!-- Chapter 11 -->
+    <div class="card locked" data-ch="11">
+      <div class="card-header">
+        <div class="chapter-number">Chapter 11</div>
+        <div class="lock-icon">
+          <i class="fas fa-lock"></i>
+        </div>
+      </div>
+      <h3>The nature of partnership</h3>
+      <p>Definition, formation, and characteristics of partnership as a business organization.</p>
+      <div class="chapter-progress">
+        <div class="progress-text">
+          <span>Progress</span>
+          <span>Locked</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: 0%"></div>
+        </div>
+      </div>
+      <button class="action-btn locked" onclick="showLockedMessage(11)">
+        <i class="fas fa-lock"></i> Login to Unlock
+      </button>
+    </div>
+    
+    <!-- Chapter 12 -->
+    <div class="card locked" data-ch="12">
+      <div class="card-header">
+        <div class="chapter-number">Chapter 12</div>
+        <div class="lock-icon">
+          <i class="fas fa-lock"></i>
+        </div>
+      </div>
+      <h3>Relations of partners to one another</h3>
+      <p>Mutual rights, duties, and liabilities of partners within the partnership firm.</p>
+      <div class="chapter-progress">
+        <div class="progress-text">
+          <span>Progress</span>
+          <span>Locked</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: 0%"></div>
+        </div>
+      </div>
+      <button class="action-btn locked" onclick="showLockedMessage(12)">
+        <i class="fas fa-lock"></i> Login to Unlock
+      </button>
+    </div>
+    
+    <!-- Chapter 13 -->
+    <div class="card locked" data-ch="13">
+      <div class="card-header">
+        <div class="chapter-number">Chapter 13</div>
+        <div class="lock-icon">
+          <i class="fas fa-lock"></i>
+        </div>
+      </div>
+      <h3>Relations of partners to third parties</h3>
+      <p>Liability of partners for acts of firm and implied authority in dealing with external parties.</p>
+      <div class="chapter-progress">
+        <div class="progress-text">
+          <span>Progress</span>
+          <span>Locked</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: 0%"></div>
+        </div>
+      </div>
+      <button class="action-btn locked" onclick="showLockedMessage(13)">
+        <i class="fas fa-lock"></i> Login to Unlock
+      </button>
+    </div>
+    
+    <!-- Chapter 14 -->
+    <div class="card locked" data-ch="14">
+      <div class="card-header">
+        <div class="chapter-number">Chapter 14</div>
+        <div class="lock-icon">
+          <i class="fas fa-lock"></i>
+        </div>
+      </div>
+      <h3>Negotiable instruments</h3>
+      <p>Promissory notes, bills of exchange, and cheques - characteristics, parties, and negotiation.</p>
+      <div class="chapter-progress">
+        <div class="progress-text">
+          <span>Progress</span>
+          <span>Locked</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: 0%"></div>
+        </div>
+      </div>
+      <button class="action-btn locked" onclick="showLockedMessage(14)">
+        <i class="fas fa-lock"></i> Login to Unlock
+      </button>
+    </div>
+    
+    <!-- Chapter 15 -->
+    <div class="card locked" data-ch="15">
+      <div class="card-header">
+        <div class="chapter-number">Chapter 15</div>
+        <div class="lock-icon">
+          <i class="fas fa-lock"></i>
+        </div>
+      </div>
+      <h3>Anti-money laundering and electronic payments</h3>
+      <p>Legal framework for AML compliance, electronic transactions, and digital payment systems.</p>
+      <div class="chapter-progress">
+        <div class="progress-text">
+          <span>Progress</span>
+          <span>Locked</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: 0%"></div>
+        </div>
+      </div>
+      <button class="action-btn locked" onclick="showLockedMessage(15)">
+        <i class="fas fa-lock"></i> Login to Unlock
+      </button>
+    </div>
+  </div>
+  
+  <!-- Coming Soon Banner -->
+  <div class="coming-soon-banner">
+    <h3>More Features Coming Soon!</h3>
+    <p>Advanced analytics, mock exams, and personalized learning paths will be available with full access.</p>
+    <button class="action-btn" onclick="upgradeAccess()" style="max-width: 300px; margin: 0 auto;">
+      <i class="fas fa-crown"></i> Upgrade to Full Access
+    </button>
+  </div>
+  
+  <!-- Footer -->
+  <div class="footer">
+    <p id="footerText">AI ICAP Examiner • Demo Mode • Chapter 1 unlocked</p>
+    <p>© 2023 AI ICAP Examiner. All rights reserved.</p>
+  </div>
+</div>
+
+<script>
+// Check user mode
+const mode = localStorage.getItem("mode") || "demo";
+const token = localStorage.getItem("token") || "";
+const username = localStorage.getItem("username") || "";
+
+// Update user info on page load
+function updateUserInfo() {
+  const modeBadge = document.getElementById('userModeBadge');
+  const modeText = document.getElementById('modeText');
+  const userInitial = document.getElementById('userInitial');
+  const footerText = document.getElementById('footerText');
+  
+  if (mode === "login") {
+    modeBadge.classList.add('pro');
+    modeText.textContent = 'Pro Member';
+    userInitial.textContent = username.charAt(0).toUpperCase() || 'U';
+    footerText.textContent = 'AI ICAP Examiner • Pro Member • All Chapters Unlocked';
+    
+    // Unlock all chapters for logged-in users
+    unlockAllChapters();
+  } else {
+    modeBadge.classList.remove('pro');
+    modeText.textContent = 'Demo Mode';
+    userInitial.textContent = 'D';
+    footerText.textContent = 'AI ICAP Examiner • Demo Mode • Chapter 1 only';
+  }
+}
+
+// Unlock all chapters for logged-in users
+function unlockAllChapters() {
+  if (mode === "login") {
+    const cards = document.querySelectorAll('.card.locked');
+    cards.forEach(card => {
+      card.classList.remove('locked');
+      
+      // Update lock icon to unlocked
+      const lockIcon = card.querySelector('.lock-icon');
+      if (lockIcon) {
+        lockIcon.className = 'unlocked-badge';
+        lockIcon.innerHTML = '<i class="fas fa-lock-open"></i>';
+      }
+      
+      // Update button
+      const button = card.querySelector('.action-btn.locked');
+      if (button) {
+        button.classList.remove('locked');
+        button.innerHTML = '<i class="fas fa-play-circle"></i> Start Chapter Test';
+        const chapterNum = card.getAttribute('data-ch');
+        button.onclick = function() { openChapter(parseInt(chapterNum)); };
+      }
+      
+      // Update progress text
+      const progressText = card.querySelector('.progress-text span:last-child');
+      if (progressText && progressText.textContent === 'Locked') {
+        progressText.textContent = '0%';
+      }
+    });
+  }
+}
+
+// Filter chapters
+function filterChapters(filter) {
+  const cards = document.querySelectorAll('.card');
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  
+  // Update active filter button
+  filterBtns.forEach(btn => btn.classList.remove('active'));
+  event.target.classList.add('active');
+  
+  // Filter cards
+  cards.forEach(card => {
+    switch(filter) {
+      case 'all':
+        card.style.display = 'block';
+        break;
+      case 'unlocked':
+        const isLocked = card.classList.contains('locked');
+        card.style.display = isLocked ? 'none' : 'block';
+        break;
+      case 'locked':
+        const isLockedCard = card.classList.contains('locked');
+        card.style.display = isLockedCard ? 'block' : 'none';
+        break;
+    }
+    
+    // Add animation when showing
+    if (card.style.display === 'block') {
+      card.style.animation = 'fadeIn 0.5s ease-out';
+      setTimeout(() => card.style.animation = '', 500);
+    }
+  });
+}
+
+// Open chapter function - SIMPLIFIED VERSION
+function openChapter(ch) {
+  // Demo user → only chapter 1
+  if (mode !== "login" && ch !== 1) {
+    alert("Login required to unlock this chapter. Demo mode only allows Chapter 1.");
+    const goToLogin = confirm("Go to login page?");
+    if (goToLogin) {
+      window.location.href = "index.html";
+    }
+    return;
+  }
+
+  // Add loading animation
+  const btn = event.target.closest('.card').querySelector('.action-btn');
+  const originalHTML = btn.innerHTML;
+  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading...';
+  btn.disabled = true;
+  
+  // Simulate loading
+  setTimeout(() => {
+    if (ch === 1) {
+      window.location.href = "chapter1.html";
+    } else {
+      // For other chapters, show message
+      alert(`Chapter ${ch} test page coming soon! Currently only Chapter 1 is fully implemented.`);
+      btn.innerHTML = originalHTML;
+      btn.disabled = false;
+    }
+  }, 800);
+}
+
+// Show locked message
+function showLockedMessage(chapterNum) {
+  if (mode === "demo") {
+    alert("Login required to unlock Chapter " + chapterNum + ". Demo mode only allows Chapter 1.");
+    const goToLogin = confirm("Go to login page?");
+    if (goToLogin) {
+      window.location.href = "index.html";
+    }
+  } else {
+    alert("You need to login to access this chapter.");
+    window.location.href = "index.html";
+  }
+}
+
+// Upgrade access
+function upgradeAccess() {
+  if (mode === "demo") {
+    alert("Upgrade to full access to unlock all chapters, advanced analytics, and personalized learning paths!");
+    
+    // Show upgrade modal simulation
+    setTimeout(() => {
+      const upgrade = confirm("Would you like to login for full access?");
+      if (upgrade) {
+        window.location.href = "index.html";
+      }
+    }, 300);
+  } else {
+    alert("You already have full access! All chapters are unlocked.");
+  }
+}
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', function() {
+  updateUserInfo();
+  
+  // Check if user is in demo mode
+  if (mode === "demo") {
+    // Show demo notification
+    setTimeout(() => {
+      const showHint = confirm("Demo Mode: Only Chapter 1 is available. Login for full access to all chapters.");
+      if (showHint) {
+        // Option to redirect to login
+        const goToLogin = confirm("Go to login page?");
+        if (goToLogin) {
+          window.location.href = "index.html";
+        }
+      }
+    }, 1000);
+  }
+  
+  // Add hover effects
+  const cards = document.querySelectorAll('.card:not(.locked)');
+  cards.forEach(card => {
+    card.addEventListener('mouseenter', function() {
+      this.style.transform = 'translateY(-8px) scale(1.02)';
+    });
+    
+    card.addEventListener('mouseleave', function() {
+      this.style.transform = 'translateY(0) scale(1)';
+    });
+  });
+  
+  // Animate progress bars on scroll
+  const observerOptions = {
+    threshold: 0.2,
+    rootMargin: '0px 0px -50px 0px'
+  };
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const progressFill = entry.target.querySelector('.progress-fill');
+        if (progressFill && progressFill.style.width === '0%') {
+          // Simulate some progress for demo
+          const randomProgress = Math.floor(Math.random() * 30);
+          progressFill.style.width = randomProgress + '%';
+          const progressText = entry.target.querySelector('.progress-text span:last-child');
+          if (progressText && progressText.textContent !== 'Locked') {
+            progressText.textContent = randomProgress + '%';
+          }
+        }
+      }
+    });
+  }, observerOptions);
+  
+  document.querySelectorAll('.card').forEach(card => {
+    observer.observe(card);
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CAF Subjects | AI ICAP Examiner</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --primary: #22c55e;
+  --primary-dark: #16a34a;
+  --secondary: #3b82f6;
+  --accent: #8b5cf6;
+  --dark: #020617;
+  --dark-light: #0f172a;
+  --text: #f8fafc;
+  --text-secondary: #94a3b8;
+  --border: rgba(255, 255, 255, 0.1);
+  --card-bg: rgba(15, 23, 42, 0.7);
+  --shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: radial-gradient(circle at top, #020617, #000);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Animated Background */
+.background-animation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.15;
+  animation: float 20s infinite ease-in-out;
+}
+
+.orb-1 {
+  width: 600px;
+  height: 600px;
+  background: var(--primary);
+  top: -200px;
+  left: -100px;
+  animation-delay: 0s;
+}
+
+.orb-2 {
+  width: 500px;
+  height: 500px;
+  background: var(--secondary);
+  bottom: -150px;
+  right: -100px;
+  animation-delay: -5s;
+}
+
+.orb-3 {
+  width: 400px;
+  height: 400px;
+  background: var(--accent);
+  top: 30%;
+  left: 60%;
+  animation-delay: -10s;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  33% { transform: translateY(-40px) rotate(120deg); }
+  66% { transform: translateY(40px) rotate(240deg); }
+}
+
+/* Navbar */
+.navbar {
+  padding: 22px 40px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(2, 6, 23, 0.8);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  animation: slideDown 0.6s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-icon {
+  color: var(--primary);
+  font-size: 24px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+
+.user-mode-badge {
+  background: rgba(34, 197, 94, 0.2);
+  color: var(--primary);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.user-mode-badge.pro {
+  background: rgba(59, 130, 246, 0.2);
+  color: var(--secondary);
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+/* Container */
+.container {
+  max-width: 1300px;
+  margin: 60px auto;
+  padding: 0 30px;
+  animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.header {
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 42px;
+  font-weight: 800;
+  margin-bottom: 15px;
+  background: linear-gradient(90deg, var(--text), var(--primary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  color: var(--text-secondary);
+  font-size: 18px;
+  max-width: 700px;
+  margin: 0 auto 30px;
+  line-height: 1.6;
+}
+
+/* Progress Bar */
+.progress-container {
+  max-width: 700px;
+  margin: 0 auto 50px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 25px;
+  border: 1px solid var(--border);
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.progress-label {
+  font-weight: 600;
+}
+
+.progress-value {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.progress-bar {
+  height: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  border-radius: 5px;
+  width: 12.5%; /* 1 out of 8 subjects unlocked */
+  transition: width 1s ease;
+}
+
+/* Filters */
+.filter-bar {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  padding: 12px 24px;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.filter-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text);
+}
+
+.filter-btn.active {
+  background: rgba(34, 197, 94, 0.2);
+  color: var(--primary);
+  border-color: rgba(34, 197, 94, 0.3);
+}
+
+/* Grid */
+.subject-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+  margin-bottom: 60px;
+}
+
+/* Card */
+.subject-card {
+  background: var(--card-bg);
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  padding: 30px;
+  transition: all 0.4s;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+.subject-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s;
+}
+
+.subject-card:hover::before {
+  transform: scaleX(1);
+}
+
+.subject-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--primary);
+  box-shadow: var(--shadow);
+}
+
+.subject-card.locked {
+  opacity: 0.7;
+  filter: grayscale(0.3);
+}
+
+.subject-card.locked:hover {
+  transform: translateY(-5px);
+  border-color: var(--text-secondary);
+}
+
+/* Card Content */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.subject-code {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--primary);
+  background: rgba(34, 197, 94, 0.1);
+  padding: 6px 12px;
+  border-radius: 20px;
+  display: inline-block;
+}
+
+.lock-icon {
+  color: #f59e0b;
+  font-size: 20px;
+  opacity: 0.8;
+}
+
+.unlocked-badge i {
+  color: #22c55e;
+  font-size: 20px;
+}
+
+.subject-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  line-height: 1.4;
+}
+
+.subject-desc {
+  color: var(--text-secondary);
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+/* Stats */
+.subject-stats {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.stat i {
+  color: var(--primary);
+}
+
+/* Action Button */
+.card-action {
+  margin-top: 25px;
+}
+
+.action-btn {
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.action-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(34, 197, 94, 0.3);
+}
+
+.action-btn.locked {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-secondary);
+  cursor: not-allowed;
+}
+
+.action-btn.locked:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+/* Coming Soon */
+.coming-soon {
+  text-align: center;
+  padding: 60px 30px;
+  background: rgba(15, 23, 42, 0.5);
+  border-radius: 20px;
+  border: 1px dashed var(--border);
+  margin-top: 40px;
+}
+
+.coming-soon h3 {
+  font-size: 28px;
+  margin-bottom: 15px;
+  color: var(--primary);
+}
+
+.coming-soon p {
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto 25px;
+}
+
+.notify-btn {
+  padding: 14px 30px;
+  border-radius: 12px;
+  background: rgba(34, 197, 94, 0.1);
+  color: var(--primary);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.notify-btn:hover {
+  background: rgba(34, 197, 94, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 30px;
+  color: var(--text-secondary);
+  font-size: 14px;
+  border-top: 1px solid var(--border);
+  margin-top: 60px;
+}
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .subject-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 18px 20px;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .container {
+    padding: 0 20px;
+    margin: 40px auto;
+  }
+  
+  h1 {
+    font-size: 34px;
+  }
+  
+  .subtitle {
+    font-size: 16px;
+  }
+  
+  .subject-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  
+  .filter-bar {
+    gap: 10px;
+  }
+  
+  .filter-btn {
+    padding: 10px 18px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 28px;
+  }
+  
+  .subject-card {
+    padding: 25px;
+  }
+  
+  .subject-title {
+    font-size: 20px;
+  }
+}
+</style>
+</head>
+
+<body>
+<!-- Animated Background -->
+<div class="background-animation">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+</div>
+
+<!-- Navbar -->
+<div class="navbar">
+  <div class="logo">
+    <i class="fas fa-brain logo-icon"></i>
+    <span>AI ICAP Examiner</span>
+  </div>
+  
+  <div class="user-info">
+    <div class="user-mode-badge" id="userModeBadge">
+      <i class="fas fa-user"></i>
+      <span id="modeText">Demo Mode</span>
+    </div>
+    <div class="user-avatar">
+      <span id="userInitial">D</span>
+    </div>
+  </div>
+</div>
+
+<!-- Main Container -->
+<div class="container">
+  <!-- Header -->
+  <div class="header">
+    <h1>CAF Subjects</h1>
+    <p class="subtitle">Master each subject with chapter-wise practice, AI-powered feedback, and performance tracking</p>
+    
+    <!-- Progress Bar -->
+    <div class="progress-container">
+      <div class="progress-header">
+        <div class="progress-label">Your Progress</div>
+        <div class="progress-value" id="progressValue">0/8 Subjects</div>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+    </div>
+    
+    <!-- Filter Bar -->
+    <div class="filter-bar">
+      <button class="filter-btn active" onclick="filterSubjects('all')">All Subjects</button>
+      <button class="filter-btn" onclick="filterSubjects('unlocked')">Unlocked</button>
+      <button class="filter-btn" onclick="filterSubjects('locked')">Locked</button>
+      <button class="filter-btn" onclick="filterSubjects('accounting')">Accounting</button>
+      <button class="filter-btn" onclick="filterSubjects('law')">Law</button>
+    </div>
+  </div>
+  
+  <!-- Subjects Grid -->
+  <div class="subject-grid" id="subjectsGrid">
+    <!-- Subjects will be loaded dynamically -->
+  </div>
+  
+  <!-- Coming Soon Section -->
+  <div class="coming-soon">
+    <h3>More Subjects Coming Soon!</h3>
+    <p>We're continuously adding new subjects, practice questions, and advanced features to help you ace your CAF exams.</p>
+    <button class="notify-btn" onclick="notifyMe()">
+      <i class="fas fa-bell"></i> Notify Me
+    </button>
+  </div>
+  
+  <!-- Footer -->
+  <div class="footer">
+    <p id="footerText">AI ICAP Examiner • Demo Mode • Chapter 1 unlocked</p>
+    <p>© 2023 AI ICAP Examiner. All rights reserved.</p>
+  </div>
+</div>
+
+<script>
+// User mode and data
+let userMode = localStorage.getItem("mode") || "demo";
+let userToken = localStorage.getItem("token") || "";
+let username = localStorage.getItem("username") || "";
+
+// Subject data
+const subjectsData = [
+  {
+    code: "CAF-4",
+    title: "Business Law",
+    desc: "Master contracts, partnership laws, negotiable instruments, and AML regulations with case-based practice questions.",
+    chapters: 15,
+    questions: "320+",
+    hours: "18h",
+    page: "business-law.html"
+  },
+  {
+    code: "CAF-1",
+    title: "Financial Accounting & Reporting – I",
+    desc: "Fundamentals of accounting, double-entry system, and preparation of financial statements for various entities.",
+    chapters: 12,
+    questions: "280+",
+    hours: "16h",
+    page: "#"
+  },
+  {
+    code: "CAF-2",
+    title: "Tax Practices",
+    desc: "Comprehensive coverage of income tax fundamentals, sales tax concepts, and tax planning strategies.",
+    chapters: 10,
+    questions: "250+",
+    hours: "15h",
+    page: "#"
+  },
+  {
+    code: "CAF-3",
+    title: "Cost & Management Accounting",
+    desc: "Costing techniques, budgeting, variance analysis, and performance evaluation for decision making.",
+    chapters: 14,
+    questions: "300+",
+    hours: "20h",
+    page: "#"
+  },
+  {
+    code: "CAF-5",
+    title: "Financial Accounting & Reporting – II",
+    desc: "Advanced accounting standards, complex transactions, and financial reporting for corporate entities.",
+    chapters: 16,
+    questions: "350+",
+    hours: "22h",
+    page: "#"
+  },
+  {
+    code: "CAF-6",
+    title: "Managerial & Financial Analysis",
+    desc: "Ratio analysis, financial modeling, business valuation, and strategic financial decision making.",
+    chapters: 11,
+    questions: "270+",
+    hours: "17h",
+    page: "#"
+  },
+  {
+    code: "CAF-7",
+    title: "Company Law",
+    desc: "Incorporation, management, corporate governance, and winding up of companies under relevant laws.",
+    chapters: 13,
+    questions: "290+",
+    hours: "19h",
+    page: "#"
+  },
+  {
+    code: "CAF-8",
+    title: "Audit & Assurance",
+    desc: "Audit planning, internal control evaluation, assurance engagements, and professional ethics.",
+    chapters: 15,
+    questions: "310+",
+    hours: "21h",
+    page: "#"
+  }
+];
+
+// Initialize the page
+function initPage() {
+  updateUserInfo();
+  renderSubjects();
+  updateProgress();
+  updateFooter();
+}
+
+// Update user information in navbar
+function updateUserInfo() {
+  const modeBadge = document.getElementById('userModeBadge');
+  const modeText = document.getElementById('modeText');
+  const userInitial = document.getElementById('userInitial');
+  
+  if (userMode === "login") {
+    modeBadge.classList.add('pro');
+    modeText.textContent = 'Pro Member';
+    userInitial.textContent = username.charAt(0).toUpperCase() || 'U';
+  } else {
+    modeBadge.classList.remove('pro');
+    modeText.textContent = 'Demo Mode';
+    userInitial.textContent = 'D';
+  }
+}
+
+// Check if subject is unlocked based on user mode
+function isSubjectUnlocked(subjectCode) {
+  if (userMode === "login") {
+    // Logged in users: ALL subjects unlocked
+    return true;
+  } else {
+    // Demo users: Only CAF-4 (Business Law) unlocked
+    return subjectCode === "CAF-4";
+  }
+}
+
+// Render all subjects
+function renderSubjects() {
+  const grid = document.getElementById('subjectsGrid');
+  grid.innerHTML = '';
+  
+  subjectsData.forEach(subject => {
+    const unlocked = isSubjectUnlocked(subject.code);
+    
+    const card = document.createElement('div');
+    card.className = `subject-card ${unlocked ? '' : 'locked'}`;
+    card.onclick = () => openSubject(subject, unlocked);
+    
+    card.innerHTML = `
+      <div class="card-header">
+        <div class="subject-code">${subject.code}</div>
+        <div class="${unlocked ? 'unlocked-badge' : 'lock-icon'}">
+          <i class="fas fa-${unlocked ? 'lock-open' : 'lock'}"></i>
+        </div>
+      </div>
+      <div class="subject-title">${subject.title}</div>
+      <div class="subject-desc">${subject.desc}</div>
+      <div class="subject-stats">
+        <div class="stat">
+          <i class="fas fa-book"></i> ${subject.chapters} Chapters
+        </div>
+        <div class="stat">
+          <i class="fas fa-question-circle"></i> ${subject.questions} Questions
+        </div>
+        <div class="stat">
+          <i class="fas fa-clock"></i> ${subject.hours} Content
+        </div>
+      </div>
+      <div class="card-action">
+        <button class="action-btn ${unlocked ? '' : 'locked'}" onclick="openSubject(${JSON.stringify(subject).replace(/"/g, '&quot;')}, ${unlocked})">
+          <i class="fas fa-${unlocked ? 'play-circle' : 'lock'}"></i>
+          ${unlocked ? 'Start Learning' : 'Login to Unlock'}
+        </button>
+      </div>
+    `;
+    
+    grid.appendChild(card);
+  });
+}
+
+// Open subject page
+function openSubject(subject, unlocked) {
+  if (!unlocked) {
+    alert("Login required to access this subject. Demo mode only allows Business Law.");
+    const goToLogin = confirm("Go to login page?");
+    if (goToLogin) {
+      window.location.href = "index.html";
+    }
+    return;
+  }
+  
+  // Check if the subject page exists
+  if (subject.code === "CAF-4") {
+    // Add loading animation
+    const btn = event.target.closest('.action-btn');
+    if (btn) {
+      const originalHTML = btn.innerHTML;
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading...';
+      btn.disabled = true;
+      
+      setTimeout(() => {
+        window.location.href = subject.page;
+      }, 800);
+    } else {
+      window.location.href = subject.page;
+    }
+  } else {
+    alert("Subject coming soon! Currently, only Business Law (CAF-4) is available.");
+  }
+}
+
+// Update progress bar
+function updateProgress() {
+  const unlockedCount = subjectsData.filter(subject => isSubjectUnlocked(subject.code)).length;
+  const totalCount = subjectsData.length;
+  const progressPercentage = (unlockedCount / totalCount) * 100;
+  
+  document.getElementById('progressValue').textContent = `${unlockedCount}/${totalCount} Subjects`;
+  
+  const progressFill = document.getElementById('progressFill');
+  setTimeout(() => {
+    progressFill.style.width = `${progressPercentage}%`;
+  }, 500);
+}
+
+// Update footer text
+function updateFooter() {
+  const footerText = document.getElementById('footerText');
+  if (userMode === "login") {
+    footerText.textContent = "AI ICAP Examiner • Pro Member • All Subjects Unlocked";
+  } else {
+    footerText.textContent = "AI ICAP Examiner • Demo Mode • Business Law Only";
+  }
+}
+
+// Subject filtering
+function filterSubjects(filter) {
+  const cards = document.querySelectorAll('.subject-card');
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  
+  // Update active filter button
+  filterBtns.forEach(btn => btn.classList.remove('active'));
+  event.target.classList.add('active');
+  
+  // Filter cards
+  cards.forEach(card => {
+    const subjectCode = card.querySelector('.subject-code').textContent;
+    const isLocked = card.classList.contains('locked');
+    
+    switch(filter) {
+      case 'all':
+        card.style.display = 'block';
+        break;
+      case 'unlocked':
+        card.style.display = isLocked ? 'none' : 'block';
+        break;
+      case 'locked':
+        card.style.display = isLocked ? 'block' : 'none';
+        break;
+      case 'accounting':
+        const accountingCodes = ['CAF-1', 'CAF-3', 'CAF-5', 'CAF-6'];
+        card.style.display = accountingCodes.includes(subjectCode) ? 'block' : 'none';
+        break;
+      case 'law':
+        const lawCodes = ['CAF-4', 'CAF-7'];
+        card.style.display = lawCodes.includes(subjectCode) ? 'block' : 'none';
+        break;
+    }
+    
+    // Add animation when showing
+    if (card.style.display === 'block') {
+      card.style.animation = 'fadeIn 0.5s ease-out';
+      setTimeout(() => card.style.animation = '', 500);
+    }
+  });
+}
+
+// Notify me button
+function notifyMe() {
+  const btn = event.target.closest('.notify-btn');
+  const originalHTML = btn.innerHTML;
+  
+  btn.innerHTML = '<i class="fas fa-check"></i> Notifications Enabled';
+  btn.style.background = 'rgba(34, 197, 94, 0.2)';
+  btn.style.color = '#22c55e';
+  btn.style.borderColor = 'rgba(34, 197, 94, 0.3)';
+  btn.disabled = true;
+  
+  setTimeout(() => {
+    alert("✅ You'll be notified when new subjects are available!");
+  }, 300);
+}
+
+// Progress animation and hover effects
+document.addEventListener('DOMContentLoaded', function() {
+  initPage();
+  
+  // Add hover effects to cards
+  const cards = document.querySelectorAll('.subject-card');
+  cards.forEach(card => {
+    card.addEventListener('mouseenter', function() {
+      if (!this.classList.contains('locked')) {
+        this.style.transform = 'translateY(-10px) scale(1.02)';
+      } else {
+        this.style.transform = 'translateY(-5px)';
+      }
+    });
+    
+    card.addEventListener('mouseleave', function() {
+      this.style.transform = 'translateY(0) scale(1)';
+    });
+  });
+  
+  // Check URL for login redirect
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get('login') === 'success') {
+    alert("Login successful! All subjects are now unlocked.");
+  }
+});
+
+// Get username from token if available
+if (userToken && userMode === "login") {
+  // Try to extract username from local storage or parse token
+  const savedUsername = localStorage.getItem("username");
+  if (savedUsername) {
+    username = savedUsername;
+  } else {
+    // If not saved, try to get from users.json via API
+    fetch(`http://127.0.0.1:5000/get-username?token=${userToken}`)
+      .then(res => res.json())
+      .then(data => {
+        if (data.username) {
+          username = data.username;
+          localStorage.setItem("username", username);
+          updateUserInfo();
+        }
+      })
+      .catch(() => {
+        // Fallback: use first part of token
+        username = "User";
+      });
+  }
+}
+</script>
+</body>
+</html>

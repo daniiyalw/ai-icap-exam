@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Admin Chapter Manager</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #020617;
+  color: #e5e7eb;
+  font-family: 'Inter', sans-serif;
+  padding: 40px;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: rgba(15, 23, 42, 0.8);
+  border-radius: 16px;
+  padding: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+h1 {
+  font-size: 28px;
+  font-weight: 700;
+  background: linear-gradient(90deg, #22c55e, #3b82f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.back-btn {
+  padding: 10px 20px;
+  background: rgba(34, 197, 94, 0.1);
+  color: #22c55e;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.back-btn:hover {
+  background: rgba(34, 197, 94, 0.2);
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 30px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+label {
+  font-weight: 600;
+  font-size: 14px;
+  color: #94a3b8;
+}
+
+select, input, textarea {
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: #e5e7eb;
+  font-size: 14px;
+  transition: all 0.3s;
+}
+
+select:focus, input:focus, textarea:focus {
+  outline: none;
+  border-color: #22c55e;
+  box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.1);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 80px;
+  font-family: 'Inter', sans-serif;
+}
+
+.actions {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.primary-btn {
+  padding: 12px 24px;
+  background: linear-gradient(90deg, #22c55e, #16a34a);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s;
+}
+
+.primary-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(34, 197, 94, 0.3);
+}
+
+.secondary-btn {
+  padding: 12px 24px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #e5e7eb;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s;
+}
+
+.secondary-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: #3b82f6;
+}
+
+.questions-container {
+  margin-top: 30px;
+}
+
+.questions-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.questions-header h2 {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.question-box {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  transition: all 0.3s;
+}
+
+.question-box:hover {
+  border-color: #3b82f6;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.question-controls {
+  display: flex;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.delete-btn {
+  padding: 8px 16px;
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.delete-btn:hover {
+  background: rgba(239, 68, 68, 0.2);
+}
+
+.marks-input {
+  width: 100px;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  color: #e5e7eb;
+}
+
+.no-questions {
+  text-align: center;
+  padding: 40px;
+  color: #94a3b8;
+  border: 2px dashed rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.status-message {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  display: none;
+  z-index: 1000;
+}
+
+.success {
+  background: rgba(34, 197, 94, 0.2);
+  color: #22c55e;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.error {
+  background: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(2, 6, 23, 0.9);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  border-top-color: #22c55e;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+  <div class="header">
+    <h1>Admin Chapter Manager</h1>
+    <a href="admin.html" class="back-btn">
+      <i class="fas fa-arrow-left"></i> Back to Admin
+    </a>
+  </div>
+
+  <div class="controls">
+    <div class="form-group">
+      <label>Subject</label>
+      <select id="subject">
+        <option value="CAF-1">CAF-1: Financial Accounting & Reporting – I</option>
+        <option value="CAF-2">CAF-2: Tax Practices</option>
+        <option value="CAF-3">CAF-3: Cost & Management Accounting</option>
+        <option value="CAF-4" selected>CAF-4: Business Law</option>
+        <option value="CAF-5">CAF-5: Financial Accounting & Reporting – II</option>
+        <option value="CAF-6">CAF-6: Managerial & Financial Analysis</option>
+        <option value="CAF-7">CAF-7: Company Law</option>
+        <option value="CAF-8">CAF-8: Audit & Assurance</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Chapter</label>
+      <select id="chapter">
+        <option value="chapter1">Chapter 1</option>
+        <option value="chapter2">Chapter 2</option>
+        <option value="chapter3">Chapter 3</option>
+        <option value="chapter4">Chapter 4</option>
+        <option value="chapter5">Chapter 5</option>
+        <option value="chapter6">Chapter 6</option>
+        <option value="chapter7">Chapter 7</option>
+        <option value="chapter8">Chapter 8</option>
+        <option value="chapter9">Chapter 9</option>
+        <option value="chapter10">Chapter 10</option>
+        <option value="chapter11">Chapter 11</option>
+        <option value="chapter12">Chapter 12</option>
+        <option value="chapter13">Chapter 13</option>
+        <option value="chapter14">Chapter 14</option>
+        <option value="chapter15">Chapter 15</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Chapter Name</label>
+      <input type="text" id="chapterName" placeholder="Enter chapter name">
+    </div>
+
+    <div class="form-group">
+      <label>Actions</label>
+      <div class="actions">
+        <button class="primary-btn" onclick="loadChapter()">
+          <i class="fas fa-sync-alt"></i> Load Chapter
+        </button>
+        <button class="primary-btn" onclick="saveChapter()">
+          <i class="fas fa-save"></i> Save Chapter
+        </button>
+        <button class="secondary-btn" onclick="addQuestion()">
+          <i class="fas fa-plus"></i> Add Question
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="questions-container">
+    <div class="questions-header">
+      <h2>Questions</h2>
+      <span id="questionsCount">0 questions</span>
+    </div>
+
+    <div id="questions">
+      <div class="no-questions">
+        <i class="fas fa-question-circle" style="font-size: 48px; margin-bottom: 15px;"></i>
+        <p>No questions yet. Click "Add Question" to start.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Status Messages -->
+<div class="status-message" id="successMessage"></div>
+<div class="status-message" id="errorMessage"></div>
+
+<!-- Loading Overlay -->
+<div class="loading" id="loadingOverlay">
+  <div class="spinner"></div>
+</div>
+
+<!-- Font Awesome -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+
+<script>
+// Global variables
+let questions = [];
+let currentChapter = "chapter1";
+let currentSubject = "CAF-4";
+
+// Check admin authentication
+const adminToken = localStorage.getItem("admin_token");
+if (!adminToken) {
+  alert("Admin login required");
+  window.location.href = "admin-login.html";
+}
+
+// DOM elements
+const subjectSelect = document.getElementById("subject");
+const chapterSelect = document.getElementById("chapter");
+const chapterNameInput = document.getElementById("chapterName");
+const questionsContainer = document.getElementById("questions");
+const questionsCount = document.getElementById("questionsCount");
+const loadingOverlay = document.getElementById("loadingOverlay");
+
+// Initialize
+document.addEventListener('DOMContentLoaded', function() {
+  // Set event listeners
+  subjectSelect.addEventListener('change', handleSubjectChange);
+  chapterSelect.addEventListener('change', handleChapterChange);
+  
+  // Load initial chapter
+  loadChapter();
+});
+
+// Handle subject change
+function handleSubjectChange() {
+  currentSubject = subjectSelect.value;
+  loadChapter();
+}
+
+// Handle chapter change
+function handleChapterChange() {
+  currentChapter = chapterSelect.value;
+  loadChapter();
+}
+
+// Load chapter data
+async function loadChapter() {
+  try {
+    showLoading();
+    
+    // Clear current questions
+    questions = [];
+    renderQuestions();
+    
+    // Fetch chapter data from backend
+    const response = await fetch(`http://127.0.0.1:5000/chapter/${currentChapter}`, {
+      headers: {
+        'Admin-Token': adminToken
+      }
+    });
+    
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
+    }
+    
+    const data = await response.json();
+    
+    // Update chapter name
+    chapterNameInput.value = data.name || "";
+    
+    // Update questions
+    questions = data.questions || [];
+    
+    // Render questions
+    renderQuestions();
+    
+    showSuccess("Chapter loaded successfully");
+    
+  } catch (error) {
+    console.error("Load error:", error);
+    
+    // If chapter doesn't exist, show empty state
+    if (error.message.includes("404")) {
+      chapterNameInput.value = "";
+      questions = [];
+      renderQuestions();
+      showSuccess("New chapter ready");
+    } else {
+      showError("Failed to load chapter");
+    }
+  } finally {
+    hideLoading();
+  }
+}
+
+// Save chapter data
+async function saveChapter() {
+  try {
+    const chapterName = chapterNameInput.value.trim();
+    
+    if (!chapterName) {
+      showError("Please enter a chapter name");
+      return;
+    }
+    
+    showLoading();
+    
+    // Prepare chapter data
+    const chapterData = {
+      subject: currentSubject,
+      chapter_id: currentChapter,
+      name: chapterName,
+      questions: questions
+    };
+    
+    // Send to backend
+    const response = await fetch("http://127.0.0.1:5000/admin/update-chapter", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Admin-Token": adminToken
+      },
+      body: JSON.stringify(chapterData)
+    });
+    
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
+    }
+    
+    const result = await response.json();
+    
+    showSuccess(`Chapter saved: ${result.updated || "Success"}`);
+    
+  } catch (error) {
+    console.error("Save error:", error);
+    showError("Failed to save chapter: " + error.message);
+  } finally {
+    hideLoading();
+  }
+}
+
+// Add new question
+function addQuestion() {
+  const questionId = "q" + Date.now() + Math.random().toString(36).substr(2, 9);
+  
+  questions.push({
+    id: questionId,
+    text: "",
+    marks: 5
+  });
+  
+  renderQuestions();
+  
+  // Scroll to new question
+  const newQuestion = document.querySelector(`[data-id="${questionId}"]`);
+  if (newQuestion) {
+    newQuestion.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    // Focus on textarea
+    const textarea = newQuestion.querySelector('textarea');
+    if (textarea) textarea.focus();
+  }
+}
+
+// Delete question
+function deleteQuestion(questionId) {
+  if (!confirm("Are you sure you want to delete this question?")) {
+    return;
+  }
+  
+  const index = questions.findIndex(q => q.id === questionId);
+  if (index !== -1) {
+    questions.splice(index, 1);
+    renderQuestions();
+    showSuccess("Question deleted");
+  }
+}
+
+// Update question text
+function updateQuestionText(questionId, text) {
+  const question = questions.find(q => q.id === questionId);
+  if (question) {
+    question.text = text;
+  }
+}
+
+// Update question marks
+function updateQuestionMarks(questionId, marks) {
+  const question = questions.find(q => q.id === questionId);
+  if (question) {
+    question.marks = parseInt(marks) || 5;
+  }
+}
+
+// Render all questions
+function renderQuestions() {
+  if (questions.length === 0) {
+    questionsContainer.innerHTML = `
+      <div class="no-questions">
+        <i class="fas fa-question-circle" style="font-size: 48px; margin-bottom: 15px;"></i>
+        <p>No questions yet. Click "Add Question" to start.</p>
+      </div>
+    `;
+    questionsCount.textContent = "0 questions";
+    return;
+  }
+  
+  let html = "";
+  
+  questions.forEach((question, index) => {
+    html += `
+      <div class="question-box" data-id="${question.id}">
+        <div class="form-group">
+          <label>Question ${index + 1}</label>
+          <textarea 
+            placeholder="Enter question text here..."
+            oninput="updateQuestionText('${question.id}', this.value)"
+          >${escapeHtml(question.text)}</textarea>
+        </div>
+        
+        <div class="question-controls">
+          <div class="form-group">
+            <label>Marks</label>
+            <input 
+              type="number" 
+              class="marks-input"
+              value="${question.marks || 5}"
+              min="1"
+              max="20"
+              oninput="updateQuestionMarks('${question.id}', this.value)"
+            >
+          </div>
+          
+          <button class="delete-btn" onclick="deleteQuestion('${question.id}')">
+            <i class="fas fa-trash"></i> Delete
+          </button>
+        </div>
+      </div>
+    `;
+  });
+  
+  questionsContainer.innerHTML = html;
+  questionsCount.textContent = `${questions.length} question${questions.length !== 1 ? 's' : ''}`;
+}
+
+// Utility function to escape HTML
+function escapeHtml(text) {
+  const div = document.createElement('div');
+  div.textContent = text;
+  return div.innerHTML;
+}
+
+// Show success message
+function showSuccess(message) {
+  const successElement = document.getElementById("successMessage");
+  successElement.textContent = message;
+  successElement.className = "status-message success";
+  successElement.style.display = "block";
+  
+  setTimeout(() => {
+    successElement.style.display = "none";
+  }, 3000);
+}
+
+// Show error message
+function showError(message) {
+  const errorElement = document.getElementById("errorMessage");
+  errorElement.textContent = message;
+  errorElement.className = "status-message error";
+  errorElement.style.display = "block";
+  
+  setTimeout(() => {
+    errorElement.style.display = "none";
+  }, 5000);
+}
+
+// Show loading overlay
+function showLoading() {
+  loadingOverlay.style.display = "flex";
+}
+
+// Hide loading overlay
+function hideLoading() {
+  loadingOverlay.style.display = "none";
+}
+
+// Keyboard shortcuts
+document.addEventListener('keydown', (e) => {
+  // Ctrl+S to save
+  if (e.ctrlKey && e.key === 's') {
+    e.preventDefault();
+    saveChapter();
+  }
+  
+  // Ctrl+Enter to add question
+  if (e.ctrlKey && e.key === 'Enter') {
+    e.preventDefault();
+    addQuestion();
+  }
+  
+  // Escape to clear selection
+  if (e.key === 'Escape') {
+    document.activeElement.blur();
+  }
+});
+</script>
+</body>
+</html>
